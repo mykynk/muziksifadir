@@ -29,3 +29,12 @@ class _AdminState extends State<Admin> {
     );
   }
 }
+/*
+pickImageFromGallery() async {
+    final imageFile = await ImagePickerWeb.getImageInfo;
+    if (imageFile != null) {
+      setState(() {
+        pickedImage = imageFile;
+      });
+    }
+  }*/
