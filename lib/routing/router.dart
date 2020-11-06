@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:muziksifadir/routing/route_names.dart';
 import 'package:muziksifadir/viewmodel/admin_model.dart';
+import 'package:muziksifadir/viewmodel/sayfalar_model.dart';
 import 'package:muziksifadir/views/admin/admin.dart';
 import 'package:muziksifadir/views/anasayfa/anasayfa.dart';
-import 'package:muziksifadir/views/etkinlikler/etkinlikler.dart';
+import 'package:muziksifadir/views/bizden_soylemesi/bizden_soylemesi.dart';
 import 'package:muziksifadir/views/hakkinda/hakkinda.dart';
 import 'package:muziksifadir/views/makaleler/makaleler.dart';
 import 'package:muziksifadir/views/sizden_gelenler/sizden_gelenler.dart';
@@ -13,10 +14,20 @@ import 'package:provider/provider.dart';
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case AnaSayfaRoute:
-      return _getPageRoute(AnaSayfa(), settings.name);
+      return _getPageRoute(
+          ChangeNotifierProvider<SayfalarModel>(
+            create: (BuildContext context) => SayfalarModel(),
+            child: AnaSayfa(),
+          ),
+          settings.name);
 
     case HakkindaRoute:
-      return _getPageRoute(Hakkinda(), settings.name);
+      return _getPageRoute(
+          ChangeNotifierProvider<SayfalarModel>(
+            create: (BuildContext context) => SayfalarModel(),
+            child: Hakkinda(),
+          ),
+          settings.name);
 
     case AdminRoute:
       return _getPageRoute(
@@ -25,13 +36,27 @@ Route<dynamic> generateRoute(RouteSettings settings) {
           settings.name);
 
     case MakalelerRoute:
-      return _getPageRoute(Makaleler(), settings.name);
+      return _getPageRoute(
+          ChangeNotifierProvider<SayfalarModel>(
+            create: (BuildContext context) => SayfalarModel(),
+            child: Makaleler(),
+          ),
+          settings.name);
 
-    case EtkinliklerRoute:
-      return _getPageRoute(Etkinlikler(), settings.name);
+    case BizdenSoylemesiRoute:
+      return _getPageRoute(
+          ChangeNotifierProvider<SayfalarModel>(
+              create: (BuildContext context) => SayfalarModel(),
+              child: BizdenSoylemesi()),
+          settings.name);
 
     case SizdenGelenlerRoute:
-      return _getPageRoute(SizdenGelenler(), settings.name);
+      return _getPageRoute(
+          ChangeNotifierProvider<SayfalarModel>(
+            create: (BuildContext context) => SayfalarModel(),
+            child: SizdenGelenler(),
+          ),
+          settings.name);
 
     default:
   }

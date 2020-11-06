@@ -26,17 +26,17 @@ class NavigationDrawer extends StatelessWidget {
           ),
           NavBarItem('Hakkında', HakkindaRoute, icon: Icons.photo),
           NavBarItem(
-            'Etkinlikler',
-            AnaSayfaRoute,
+            'Bizden Söylemesi',
+            BizdenSoylemesiRoute,
             icon: Icons.home,
           ),
-          NavBarItem('İletişim', HakkindaRoute, icon: Icons.photo),
+       //   NavBarItem('İletişim', HakkindaRoute, icon: Icons.photo),
           NavBarItem(
             'Makaleler',
-            AnaSayfaRoute,
+            MakalelerRoute,
             icon: Icons.home,
           ),
-          NavBarItem('Sizden Gelenler', HakkindaRoute, icon: Icons.photo),
+          NavBarItem('Sizden Gelenler', SizdenGelenlerRoute, icon: Icons.photo),
         ],
       ),
     );
@@ -45,7 +45,7 @@ class NavigationDrawer extends StatelessWidget {
  * Anasayfa
  * Hakkinda
  * Hakkında
- * Etkinlikler
+ * BizdenSoylemesi
  * İletişim
  * Makaleler
  * Sizden Gelenler

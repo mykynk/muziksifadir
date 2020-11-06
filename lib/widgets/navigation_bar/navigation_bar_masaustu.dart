@@ -28,7 +28,7 @@ class NavigationBarMasaustu extends StatelessWidget {
                 SizedBox(width: width(context) * 0.03),
                 NavBarItem('Hakkında', HakkindaRoute),
                 SizedBox(width: width(context) * 0.03),
-                NavBarItem('Etkinlikler', EtkinliklerRoute),
+                NavBarItem('Bizden Söylemesi', BizdenSoylemesiRoute),
                 SizedBox(width: width(context) * 0.03),
                 NavBarItem('Makaleler', MakalelerRoute),
                 SizedBox(width: width(context) * 0.03),

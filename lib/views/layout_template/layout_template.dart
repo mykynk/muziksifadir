@@ -27,7 +27,7 @@ class LayoutTemplate extends StatelessWidget {
 /**
  * Anasayfa
  * Hakkında
- * Etkinlikler
+ * BizdenSoylemesi
  * İletişim
  * Makaleler
  * Sizden Gelenler

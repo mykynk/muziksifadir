@@ -1,12 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:muziksifadir/viewmodel/sayfalar_model.dart';
+import 'package:provider/provider.dart';
 
-class AnaSayfa extends StatelessWidget {
-  const AnaSayfa({Key key}) : super(key: key);
+class AnaSayfa extends StatefulWidget {
+  AnaSayfa({Key key}) : super(key: key);
+
+  @override
+  _AnaSayfaState createState() => _AnaSayfaState();
+}
+
+class _AnaSayfaState extends State<AnaSayfa> {
+  SayfalarModel _sayfalarModel;
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      'assets/images/image.jpg',
-      fit: BoxFit.cover,
+    _sayfalarModel = Provider.of<SayfalarModel>(context);
+
+    return Container(
+      child: FutureBuilder(
+        future: _sayfalarModel.anaSayfaGetir(),
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          return _sayfalarModel.state != SayfalarViewState.Busy
+              ? Image.network(
+                  snapshot.data,
+                  fit: BoxFit.cover,
+                )
+              : Container();
+        },
+      ),
     );
   }
 }
