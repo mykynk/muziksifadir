@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:muziksifadir/routing/route_names.dart';
+import 'package:muziksifadir/viewmodel/admin_model.dart';
 import 'package:muziksifadir/views/admin/admin.dart';
 import 'package:muziksifadir/views/anasayfa/anasayfa.dart';
 import 'package:muziksifadir/views/etkinlikler/etkinlikler.dart';
 import 'package:muziksifadir/views/hakkinda/hakkinda.dart';
 import 'package:muziksifadir/views/makaleler/makaleler.dart';
 import 'package:muziksifadir/views/sizden_gelenler/sizden_gelenler.dart';
+import 'package:provider/provider.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -17,7 +19,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(Hakkinda(), settings.name);
 
     case AdminRoute:
-      return _getPageRoute(Admin(), settings.name);
+      return _getPageRoute(
+          ChangeNotifierProvider<AdminModel>(
+              create: (BuildContext context) => AdminModel(), child: Admin()),
+          settings.name);
 
     case MakalelerRoute:
       return _getPageRoute(Makaleler(), settings.name);

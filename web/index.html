@@ -29,7 +29,28 @@
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="/__/firebase/7.23.0/firebase-analytics.js"></script>
-
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-storage.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyCMWHzQvm0UvSs6eZDaC-kLSwC1ACG2nAM",
+    authDomain: "muzik-sifadir.firebaseapp.com",
+    databaseURL: "https://muzik-sifadir.firebaseio.com",
+    projectId: "muzik-sifadir",
+    storageBucket: "muzik-sifadir.appspot.com",
+    messagingSenderId: "205511772524",
+    appId: "1:205511772524:web:935696ffe4d634612a0b49",
+    measurementId: "G-EP3LEK3RDD"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 <!-- Initialize Firebase -->
 <script src="/__/firebase/init.js"></script>
   <!-- This script installs service_worker.js to provide PWA functionality to

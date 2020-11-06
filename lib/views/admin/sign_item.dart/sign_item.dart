@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:muziksifadir/viewmodel/admin_model.dart';
+import 'package:provider/provider.dart';
 
 class AdminSign extends StatelessWidget {
   AdminSign({Key key}) : super(key: key);
   String _email = "";
-  GlobalKey _formKey = GlobalKey<FormState>();
+  String _sifre = "";
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    final _adminModel = Provider.of<AdminModel>(context);
     return Container(
       child: Center(
         child: Form(
@@ -26,28 +30,15 @@ class AdminSign extends StatelessWidget {
                       TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(27.5),
-                    //      borderSide: BorderSide(color: Color(0xFFFFFFFF)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    //  borderSide: BorderSide(color: Color(0xFF2F505A)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    //  borderSide: BorderSide(color: Color(0xFF2F505A)),
+                    borderSide: BorderSide(color: Color(0xFFFFFFFF)),
                   ),
                 ),
-                validator: (girilenDeger) {
-                  if (girilenDeger.length < 3) {
-                    return "Başlığın uzunluğu 3'ten küçük olamaz.";
-                  }
-                },
                 onSaved: (girilenDeger) {
                   _email = girilenDeger;
                 },
               ),
+              SizedBox(height: 20),
               TextFormField(
-                maxLength: 50,
                 minLines: 1,
                 maxLines: 3,
                 autofocus: false,
@@ -60,24 +51,23 @@ class AdminSign extends StatelessWidget {
                     borderRadius: BorderRadius.circular(27.5),
                     borderSide: BorderSide(color: Color(0xFFFFFFFF)),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(color: Color(0xFF2F505A)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(color: Color(0xFF2F505A)),
-                  ),
                 ),
-                validator: (girilenDeger) {
-                  if (girilenDeger.length < 3) {
-                    return "Başlığın uzunluğu 3'ten küçük olamaz.";
-                  }
-                },
                 onSaved: (girilenDeger) {
-                  _email = girilenDeger;
+                  _sifre = girilenDeger;
                 },
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Text("Giriş Yap"),
+                  FlatButton(
+                    onPressed: () {
+                      _formKey.currentState.save();
+                    },
+                    child: Icon(Icons.arrow_forward_ios_rounded),
+                  ),
+                ],
+              )
             ],
           ),
         ),
