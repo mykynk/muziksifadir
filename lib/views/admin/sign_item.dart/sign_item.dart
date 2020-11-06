@@ -61,8 +61,10 @@ class AdminSign extends StatelessWidget {
                 children: <Widget>[
                   Text("Giriş Yap"),
                   FlatButton(
-                    onPressed: () {
+                    onPressed: () async {
                       _formKey.currentState.save();
+                     bool sonuc = await _adminModel.adminGiris(_email, _sifre);
+                    print(sonuc);
                     },
                     child: Icon(Icons.arrow_forward_ios_rounded),
                   ),
