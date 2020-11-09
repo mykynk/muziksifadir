@@ -1,5 +1,8 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:muziksifadir/viewmodel/admin_model.dart';
+import 'package:muziksifadir/views/admin/admin_control_panel.dart';
 import 'package:provider/provider.dart';
 
 class AdminSign extends StatelessWidget {
@@ -63,8 +66,12 @@ class AdminSign extends StatelessWidget {
                   FlatButton(
                     onPressed: () async {
                       _formKey.currentState.save();
-                     bool sonuc = await _adminModel.adminGiris(_email, _sifre);
-                    print(sonuc);
+                      bool sonuc = await _adminModel.adminGiris(_email, _sifre);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  AdminControlPanel()));
                     },
                     child: Icon(Icons.arrow_forward_ios_rounded),
                   ),

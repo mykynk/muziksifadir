@@ -6,7 +6,7 @@ import 'package:muziksifadir/routing/router.dart';
 import 'package:muziksifadir/services/navigation_services.dart';
 
 void main() async {
-   setupLocator();
+  setupLocator();
   runApp(MyApp());
 }
 

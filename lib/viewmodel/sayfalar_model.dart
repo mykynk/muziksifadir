@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:muziksifadir/locator.dart';
 import 'package:muziksifadir/models/bizden_soylemesi_model.dart';
+import 'package:muziksifadir/models/makale_model.dart';
+import 'package:muziksifadir/models/sizden_gelenler_model.dart';
 import 'package:muziksifadir/services/firestore_db_service.dart';
 
 enum SayfalarViewState { Idle, Busy }
@@ -23,7 +25,7 @@ class SayfalarModel with ChangeNotifier {
   Future<List<String>> hakkindaGetir() async {
     _state = SayfalarViewState.Busy;
     List<String> gelenStringList = await _firestoreDbService.hakkindaGetir();
-
+    print("hakkında getiriliyor");
     _state = SayfalarViewState.Idle;
     //  notifyListeners();
     return gelenStringList;
@@ -40,5 +42,31 @@ class SayfalarModel with ChangeNotifier {
     _state = SayfalarViewState.Idle;
     //  notifyListeners();
     return bizdensoylemesiListe;
+  }
+
+  Future<List<MakaleModel>> makaleGetir() async {
+    _state = SayfalarViewState.Busy;
+    List gelenListe = await _firestoreDbService.listeGetir('makaleler');
+    List<MakaleModel> makaleListe = [];
+    gelenListe.forEach((element) {
+      makaleListe.add(MakaleModel.fromMap(element));
+    });
+    print("Makale getiriliyor");
+    _state = SayfalarViewState.Idle;
+    //  notifyListeners();
+    return makaleListe;
+  }
+
+  Future<List<SizdenGelenlerModel>> sizdenGelenlerGetir() async {
+    _state = SayfalarViewState.Busy;
+    List gelenListe = await _firestoreDbService.listeGetir('sizdengelenler');
+    List<SizdenGelenlerModel> sizdenGelenlerListe = [];
+    gelenListe.forEach((element) {
+      sizdenGelenlerListe.add(SizdenGelenlerModel.fromMap(element));
+    });
+    print("SizdenGelenler getiriliyor");
+    _state = SayfalarViewState.Idle;
+    //  notifyListeners();
+    return sizdenGelenlerListe;
   }
 }

@@ -34,7 +34,7 @@ class NavigationBarMasaustu extends StatelessWidget {
                 SizedBox(width: width(context) * 0.03),
                 NavBarItem('Sizden Gelenler', SizdenGelenlerRoute),
                 SizedBox(width: width(context) * 0.03),
-                NavBarItem('Admin', AdminRoute),
+                NavBarItem('Röportajlar', RoportajlarRoute),
               ],
             ),
           ),

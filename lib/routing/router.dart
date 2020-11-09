@@ -8,6 +8,7 @@ import 'package:muziksifadir/views/anasayfa/anasayfa.dart';
 import 'package:muziksifadir/views/bizden_soylemesi/bizden_soylemesi.dart';
 import 'package:muziksifadir/views/hakkinda/hakkinda.dart';
 import 'package:muziksifadir/views/makaleler/makaleler.dart';
+import 'package:muziksifadir/views/roportajlar/roportajlar.dart';
 import 'package:muziksifadir/views/sizden_gelenler/sizden_gelenler.dart';
 import 'package:provider/provider.dart';
 
@@ -48,6 +49,13 @@ Route<dynamic> generateRoute(RouteSettings settings) {
           ChangeNotifierProvider<SayfalarModel>(
               create: (BuildContext context) => SayfalarModel(),
               child: BizdenSoylemesi()),
+          settings.name);
+
+    case RoportajlarRoute:
+      return _getPageRoute(
+          ChangeNotifierProvider<SayfalarModel>(
+              create: (BuildContext context) => SayfalarModel(),
+              child: Roportajlar()),
           settings.name);
 
     case SizdenGelenlerRoute:

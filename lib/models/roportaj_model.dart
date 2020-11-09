@@ -1,4 +1,4 @@
-class MakaleModel {
+class RoportajModel {
   final String link;
   final String yazi;
   final String baslik;
@@ -11,7 +11,7 @@ class MakaleModel {
     };
   }
 
-  MakaleModel.fromMap(Map<String, dynamic> map)
+  RoportajModel.fromMap(Map<String, dynamic> map)
       : link = map['link'],
         yazi = map['yazi'],
         baslik = map['baslik'];
