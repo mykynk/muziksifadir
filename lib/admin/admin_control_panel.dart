@@ -1,12 +1,8 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:muziksifadir/constants/size.dart';
 import 'package:muziksifadir/routing/route_names.dart';
-import 'package:muziksifadir/styles/text_styles.dart';
 import 'package:muziksifadir/viewmodel/admin_model.dart';
 import 'package:muziksifadir/admin/widgets/control_panel_item.dart';
 import 'package:provider/provider.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 
 class AdminControlPanel extends StatefulWidget {
   AdminControlPanel({Key key}) : super(key: key);
@@ -69,6 +65,6 @@ class _AdminControlPanelState extends State<AdminControlPanel> {
                   : Text("Lütfen Bekleyin"),
             ],
           )
-        : Container();
+        : Text("Lütfen Bekleyin");
   }
 }
