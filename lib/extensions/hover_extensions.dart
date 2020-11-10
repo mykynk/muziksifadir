@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:html' as html;
+import 'package:universal_html/html.dart' as html;
 
 import 'package:muziksifadir/widgets/translate_on_hover.dart';
 

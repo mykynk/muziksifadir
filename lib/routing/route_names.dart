@@ -5,4 +5,5 @@ const String MakalelerRoute = '/makaleler';
 const String BizdenSoylemesiRoute = '/bizdensoylemesi';
 const String SizdenGelenlerRoute = '/sizdengelenler';
 const String RoportajlarRoute = '/roportajlar';
+const String AdminControlPanelRoute = '/admin/kontrolpaneli';
 const List menuRoute = ['/anasayfa', '/hakkinda'];

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:muziksifadir/admin/views/sign_item.dart/sign_item.dart';
 import 'package:muziksifadir/constants/size.dart';
-import 'package:muziksifadir/views/admin/sign_item.dart/sign_item.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class Admin extends StatefulWidget {

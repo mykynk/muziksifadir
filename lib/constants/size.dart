@@ -11,3 +11,7 @@ double height(BuildContext context) {
 double width(BuildContext context) {
   return _size(context).width;
 }
+
+double ort(BuildContext context) {
+  return (height(context) * width(context)) / 2;
+}

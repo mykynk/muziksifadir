@@ -3,7 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:muziksifadir/routing/route_names.dart';
 import 'package:muziksifadir/viewmodel/admin_model.dart';
 import 'package:muziksifadir/viewmodel/sayfalar_model.dart';
-import 'package:muziksifadir/views/admin/admin.dart';
+import 'package:muziksifadir/admin/admin.dart';
+import 'package:muziksifadir/admin/admin_control_panel.dart';
 import 'package:muziksifadir/views/anasayfa/anasayfa.dart';
 import 'package:muziksifadir/views/bizden_soylemesi/bizden_soylemesi.dart';
 import 'package:muziksifadir/views/hakkinda/hakkinda.dart';
@@ -28,12 +29,6 @@ Route<dynamic> generateRoute(RouteSettings settings) {
             create: (BuildContext context) => SayfalarModel(),
             child: Hakkinda(),
           ),
-          settings.name);
-
-    case AdminRoute:
-      return _getPageRoute(
-          ChangeNotifierProvider<AdminModel>(
-              create: (BuildContext context) => AdminModel(), child: Admin()),
           settings.name);
 
     case MakalelerRoute:
@@ -66,6 +61,64 @@ Route<dynamic> generateRoute(RouteSettings settings) {
           ),
           settings.name);
 
+    case AdminRoute:
+      return _getPageRoute(
+          ChangeNotifierProvider<AdminModel>(
+              create: (BuildContext context) => AdminModel(), child: Admin()),
+          settings.name);
+    case AdminControlPanelRoute:
+      return _getPageRoute(
+          ChangeNotifierProvider<AdminModel>(
+            create: (BuildContext context) => AdminModel(),
+            child: AdminControlPanel(),
+          ),
+          settings.name);
+
+    case AdminControlPanelRoute + AnaSayfaRoute:
+      return _getPageRoute(
+          ChangeNotifierProvider<AdminModel>(
+            create: (BuildContext context) => AdminModel(),
+            child: AnaSayfa(),
+          ),
+          settings.name);
+
+    case AdminControlPanelRoute + HakkindaRoute:
+      return _getPageRoute(
+          ChangeNotifierProvider<AdminModel>(
+            create: (BuildContext context) => AdminModel(),
+            child: Hakkinda(),
+          ),
+          settings.name);
+
+    case AdminControlPanelRoute + MakalelerRoute:
+      return _getPageRoute(
+          ChangeNotifierProvider<AdminModel>(
+            create: (BuildContext context) => AdminModel(),
+            child: Makaleler(),
+          ),
+          settings.name);
+
+    case AdminControlPanelRoute + BizdenSoylemesiRoute:
+      return _getPageRoute(
+          ChangeNotifierProvider<AdminModel>(
+              create: (BuildContext context) => AdminModel(),
+              child: BizdenSoylemesi()),
+          settings.name);
+
+    case AdminControlPanelRoute + RoportajlarRoute:
+      return _getPageRoute(
+          ChangeNotifierProvider<AdminModel>(
+              create: (BuildContext context) => AdminModel(),
+              child: Roportajlar()),
+          settings.name);
+
+    case AdminControlPanelRoute + SizdenGelenlerRoute:
+      return _getPageRoute(
+          ChangeNotifierProvider<AdminModel>(
+            create: (BuildContext context) => AdminModel(),
+            child: SizdenGelenler(),
+          ),
+          settings.name);
     default:
   }
 }

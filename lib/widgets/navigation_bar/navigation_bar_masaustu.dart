@@ -46,11 +46,11 @@ class NavigationBarMasaustu extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Icon(Icons.access_time_sharp),
+                child: Icon(Icons.access_time),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Icon(Icons.add_alarm_outlined),
+                child: Icon(Icons.access_time),
               ),
             ],
           ),
