@@ -5,7 +5,7 @@ import 'package:path/path.dart' as path;
 
 class FirebaseStorageService {
  static Future<Uri> uploadImageToFirebaseAndShareDownloadUrl(
-      MediaInfo info, String attribute1) async {
+      MediaInfo info, String yol) async {
     String mimeType = mime(path.basename(info.fileName));
     final extension = extensionFromMime(mimeType);
     var metadata = fb.UploadMetadata(
@@ -16,7 +16,7 @@ class FirebaseStorageService {
         .storage()
        // .refFromURL('gs://your-projecct-url.com')
         .ref(
-            "images/$attribute1/images_${DateTime.now().millisecondsSinceEpoch}.${extension}");
+            "images/$yol/images_${DateTime.now().millisecondsSinceEpoch}.${extension}");
     fb.UploadTask uploadTask = ref.put(info.data, metadata);
     fb.UploadTaskSnapshot taskSnapshot = await uploadTask.future;
     return taskSnapshot.ref.getDownloadURL();

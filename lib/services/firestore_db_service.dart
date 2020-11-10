@@ -13,6 +13,12 @@ class FirestoreDbService {
     }
   }
 
+  Future<bool> anaSayfaGuncelle(String url) async {
+    await _firebaseDB.collection('sayfalar').document('anasayfa').updateData({
+      'photo_url': url,
+    });
+  }
+
   Future<String> anaSayfaGetir() async {
     final okunanMap =
         await _firebaseDB.collection('sayfalar').document('anasayfa').get();
@@ -30,10 +36,8 @@ class FirestoreDbService {
   }
 
   Future<List> listeGetir(String sayfa) async {
-    final okunanMap = await _firebaseDB
-        .collection('sayfalar')
-        .document(sayfa)
-        .get();
+    final okunanMap =
+        await _firebaseDB.collection('sayfalar').document(sayfa).get();
     List liste = okunanMap.data['liste'];
 
     return liste;
