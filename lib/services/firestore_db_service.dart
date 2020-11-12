@@ -26,13 +26,11 @@ class FirestoreDbService {
     return photoUrl;
   }
 
-  Future<List<String>> hakkindaGetir() async {
+  Future<Map> hakkindaGetir() async {
     final okunanMap =
         await _firebaseDB.collection('sayfalar').document('hakkinda').get();
-    List<String> liste = [];
-    liste.add(okunanMap.data['photo_url']);
-    liste.add(okunanMap.data['yazi']);
-    return liste;
+    
+    return okunanMap.data;
   }
 
   Future<List> listeGetir(String sayfa) async {

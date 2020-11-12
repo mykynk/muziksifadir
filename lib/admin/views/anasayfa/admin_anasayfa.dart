@@ -22,20 +22,23 @@ class _AdminAnaSayfaState extends State<AdminAnaSayfa> {
     _adminModel = Provider.of<AdminModel>(context);
     if (!girdiMi) {
       anaSayfaGetir();
+      girdiMi = true;
     }
     return girdiMi
-        ? Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: GestureDetector(
-                onTap: ()=>uploadImage(),
-                  child: Image.network(_photoUrl),
+        ? SingleChildScrollView(
+                  child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                  onTap: ()=>uploadImage(),
+                    child: Image.network(_photoUrl),
+                  ),
                 ),
-              )
-            ],
-          )
+              ],
+            ),
+        )
         : Container();
   }
 

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:muziksifadir/admin/views/anasayfa/admin_anasayfa.dart';
+import 'package:muziksifadir/admin/views/bizdensoylemesi/admin_bizden_soylemesi.dart';
+import 'package:muziksifadir/admin/views/hakkinda/admin_hakkinda.dart';
+import 'package:muziksifadir/admin/views/makaleler/admin_makaleler.dart';
+import 'package:muziksifadir/admin/views/roportajlar/admin_roportajlar.dart';
+import 'package:muziksifadir/admin/views/sizdengelenler/admin_sizdengelenler.dart';
 import 'package:muziksifadir/routing/route_names.dart';
 import 'package:muziksifadir/viewmodel/admin_model.dart';
 import 'package:muziksifadir/viewmodel/sayfalar_model.dart';
@@ -92,7 +97,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
             create: (BuildContext context) => SayfalarModel(),
             child: ChangeNotifierProvider<AdminModel>(
               create: (BuildContext context) => AdminModel(),
-              child: AdminAnaSayfa(),
+              child: AdminHakkinda(),
             ),
           ),
           settings.name);
@@ -103,7 +108,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
             create: (BuildContext context) => SayfalarModel(),
             child: ChangeNotifierProvider<AdminModel>(
               create: (BuildContext context) => AdminModel(),
-              child: AdminAnaSayfa(),
+              child: AdminMakaleler(),
             ),
           ),
           settings.name);
@@ -114,7 +119,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
             create: (BuildContext context) => SayfalarModel(),
             child: ChangeNotifierProvider<AdminModel>(
               create: (BuildContext context) => AdminModel(),
-              child: AdminAnaSayfa(),
+              child: AdminBizdenSoylemesi(),
             ),
           ),
           settings.name);
@@ -125,7 +130,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
             create: (BuildContext context) => SayfalarModel(),
             child: ChangeNotifierProvider<AdminModel>(
               create: (BuildContext context) => AdminModel(),
-              child: AdminAnaSayfa(),
+              child: AdminRoportajlar(),
             ),
           ),
           settings.name);
@@ -136,7 +141,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
             create: (BuildContext context) => SayfalarModel(),
             child: ChangeNotifierProvider<AdminModel>(
               create: (BuildContext context) => AdminModel(),
-              child: AdminAnaSayfa(),
+              child: AdminSizdenGelenler(),
             ),
           ),
           settings.name);

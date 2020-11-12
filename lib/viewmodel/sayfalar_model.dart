@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:muziksifadir/locator.dart';
 import 'package:muziksifadir/models/bizden_soylemesi_model.dart';
+import 'package:muziksifadir/models/hakkinda_model/hakkinda_model.dart';
 import 'package:muziksifadir/models/makale_model.dart';
 import 'package:muziksifadir/models/sizden_gelenler_model.dart';
 import 'package:muziksifadir/services/firestore_db_service.dart';
@@ -16,19 +17,21 @@ class SayfalarModel with ChangeNotifier {
   Future<String> anaSayfaGetir() async {
     _state = SayfalarViewState.Busy;
     String gelenString = await _firestoreDbService.anaSayfaGetir();
+    print("anaSayfa getiriliyor");
 
     _state = SayfalarViewState.Idle;
     //  notifyListeners();
     return gelenString;
   }
 
-  Future<List<String>> hakkindaGetir() async {
+  Future<HakkindaModel> hakkindaGetir() async {
     _state = SayfalarViewState.Busy;
-    List<String> gelenStringList = await _firestoreDbService.hakkindaGetir();
+    Map gelenMap = await _firestoreDbService.hakkindaGetir();
+    HakkindaModel hakkinda = HakkindaModel.fromMap(gelenMap);
     print("hakkında getiriliyor");
     _state = SayfalarViewState.Idle;
     //  notifyListeners();
-    return gelenStringList;
+    return hakkinda;
   }
 
   Future<List<BizdenSoylemesiModel>> bizdenSoylemesiGetir() async {
