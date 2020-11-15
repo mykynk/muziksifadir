@@ -3,6 +3,7 @@ import 'package:muziksifadir/constants/size.dart';
 import 'package:muziksifadir/routing/route_names.dart';
 import 'package:muziksifadir/views/iletisim/iletisim.dart';
 import 'package:muziksifadir/widgets/navbar_item/navbar_item.dart';
+import 'package:muziksifadir/widgets/social_item/social_item.dart';
 
 import 'navbar_logo.dart';
 

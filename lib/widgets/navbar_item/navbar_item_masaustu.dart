@@ -16,7 +16,14 @@ class NavBarItemMasaustu extends ProviderWidget<NavBarItemModel> {
               model.title,
               style: navBarTextStyle(sizingInformation.deviceScreenType),
             ),
-          
+            model.iconData != null
+                ? Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Container(
+                        height: 30,
+                        child: Image.asset('assets/icons/instagram.png')),
+                  )
+                : SizedBox(),
           ],
         ),
       ),

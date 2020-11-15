@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:muziksifadir/constants/app_colors.dart';
 
 class TranslateOnHover extends StatefulWidget {
   final Widget child;

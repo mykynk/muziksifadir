@@ -55,7 +55,7 @@ class _HakkindaState extends State<Hakkinda> {
                 padding: EdgeInsets.fromLTRB(0, 100, 5, 5),
                 child: ListView(controller: _controller, children: <Widget>[
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.3,
+                    height: MediaQuery.of(context).size.height * 0.6,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                         image: DecorationImage(
@@ -83,7 +83,7 @@ class _HakkindaState extends State<Hakkinda> {
                             color: _backgroundColor,
                           ),
                           width: width(context) * 0.3,
-                          height: 300,
+                          height: 200,
                         ),
                         /*Container(
                       width: width(context) * 0.7,
@@ -106,7 +106,7 @@ class _HakkindaState extends State<Hakkinda> {
                     //  color: suYesili,
                     //Color(0xFFEDEDF4),
                     ),*/
-                    height: 300,
+                    height: 200,
                     width: width(context),
                     alignment: Alignment(0, 0.5),
                     child: Row(
