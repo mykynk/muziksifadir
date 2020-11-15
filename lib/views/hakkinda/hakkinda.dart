@@ -114,8 +114,8 @@ class _HakkindaState extends State<Hakkinda> {
   }
 
   List<Widget> _sskList(BuildContext context) {
-    var akademisyenler = List<Widget>();
-    akademisyenler.add(Padding(
+    var ssklar = List<Widget>();
+    ssklar.add(Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Text(
         "\nBAŞLICA SEMİNER-SEMPOZYUM-KONSER:",
@@ -124,7 +124,7 @@ class _HakkindaState extends State<Hakkinda> {
     ));
     for (var i = 0; i < hakkinda.ssk.length; i++) {
       SSK oAnkiSSK = SSK.fromMap(hakkinda.ssk[i]);
-      akademisyenler.add(Padding(
+      ssklar.add(Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: RichText(
             text: TextSpan(children: [
@@ -135,7 +135,7 @@ class _HakkindaState extends State<Hakkinda> {
       ));
     }
 
-    return akademisyenler;
+    return ssklar;
   }
 
    _scrollListener() {
