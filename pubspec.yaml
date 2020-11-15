@@ -41,6 +41,9 @@ dependencies:
   firebase: ^7.3.2
   mime_type: ^0.3.2
   universal_html: ^1.2.1
+
+  flutter_gifimage: ^1.0.1
+
   
 
 dev_dependencies:

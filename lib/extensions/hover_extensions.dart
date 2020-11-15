@@ -12,6 +12,7 @@ extension HoverExtensions on Widget {
       child: this, // the widget we're using the extension on
       onHover: (event) => appContainer.style.cursor = 'pointer',
       onExit: (event) => appContainer.style.cursor = 'default',
+
     );
   }
 

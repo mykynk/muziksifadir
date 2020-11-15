@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:muziksifadir/constants/app_colors.dart';
 import 'package:muziksifadir/locator.dart';
 import 'package:muziksifadir/models/navbar_item_model.dart';
 import 'package:muziksifadir/services/navigation_services.dart';
@@ -26,6 +27,7 @@ class NavBarItem extends StatelessWidget {
         // DON'T EVER USE A SERVICE DIRECTLY IN THE UI TO CHANGE ANY KIND OF STATE
         // SERVICES SHOULD ONLY BE USED FROM A VIEWMODEL
         locator<NavigationService>().navigateTo(navigationPath);
+        secili = title; 
       },
       child: Provider.value(
         value: model,

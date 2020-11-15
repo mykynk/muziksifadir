@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:muziksifadir/constants/size.dart';
 import 'package:muziksifadir/routing/route_names.dart';
+import 'package:muziksifadir/views/iletisim/iletisim.dart';
 import 'package:muziksifadir/widgets/navbar_item/navbar_item.dart';
 
 import 'navbar_logo.dart';
@@ -38,22 +39,7 @@ class NavigationBarMasaustu extends StatelessWidget {
               ],
             ),
           ),
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Icon(Icons.ac_unit),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Icon(Icons.access_time),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Icon(Icons.access_time),
-              ),
-            ],
-          ),
+          SocialMediaIcons(),
         ],
       ),
     );
