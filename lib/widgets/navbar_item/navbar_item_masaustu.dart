@@ -9,11 +9,15 @@ class NavBarItemMasaustu extends ProviderWidget<NavBarItemModel> {
   Widget build(BuildContext context, NavBarItemModel model) {
     return ResponsiveBuilder(
       builder: (context, sizingInformation) => Container(
-      
         padding: EdgeInsets.all(8),
-        child: Text(
-          model.title,
-          style: navBarTextStyle(sizingInformation.deviceScreenType),
+        child: Column(
+          children: [
+            Text(
+              model.title,
+              style: navBarTextStyle(sizingInformation.deviceScreenType),
+            ),
+          
+          ],
         ),
       ),
     );

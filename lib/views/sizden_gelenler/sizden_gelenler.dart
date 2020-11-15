@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:muziksifadir/constants/app_colors.dart';
 import 'package:muziksifadir/constants/size.dart';
 import 'package:muziksifadir/models/sizden_gelenler_model.dart';
 import 'package:muziksifadir/viewmodel/sayfalar_model.dart';
@@ -18,23 +19,68 @@ class _SizdenGelenlerState extends State<SizdenGelenler> {
     return Center(
       child: Column(
         children: [
-          Container(
-            height: 100,
-            color: Color(0xFFEDEDF4),
-          ),
-          Container(
-            height: 100,
-            width: width(context),
-            alignment: Alignment.center,
-            color: Color(0xFFEDEDF4),
-            child: Text(
-              "Sizden Gelenlerler",
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-                color: Colors.black54,
+         Stack(
+            children: [
+              Container(
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(0),
+                          topRight: Radius.circular(0),
+                        ),
+                      //  color: krem,
+                      ),
+                      width: width(context) * 0.3,
+                      height: 300,
+                    ),
+                    /*Container(
+                      width: width(context) * 0.7,
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.only(bottomLeft: Radius.circular(500)),
+                        color: krem,
+                      ),
+                      height: 300,
+                    ),*/
+                  ],
+                ),
               ),
-            ),
+              Positioned(
+                left: -80,
+                              child: Container(
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                      image: AssetImage('assets/images/varlik.png'),
+                      fit: BoxFit.cover,
+                    ),
+                      //  color: suYesili,
+                      //Color(0xFFEDEDF4),
+                      ),
+                  height: 300,
+                  width: width(context)*0.65,
+                  alignment: Alignment(0, 0.5),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: width(context) * 0.215,
+                      ),
+                      Text(
+                        "Sizden Gelenler",
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black54,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
           Expanded(
             child: Container(
@@ -88,7 +134,7 @@ class _SizdenGelenlerState extends State<SizdenGelenler> {
                             },
                           ),
                         )
-                      : CircularProgressIndicator();
+                      : Center(child: CircularProgressIndicator());
                 },
               ),
             ),
