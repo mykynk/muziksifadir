@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:muziksifadir/locator.dart';
 import 'package:muziksifadir/models/bizden_soylemesi_model.dart';
 import 'package:muziksifadir/models/hakkinda_model/hakkinda_model.dart';
-import 'package:muziksifadir/models/makale_model.dart';
+import 'package:muziksifadir/models/makaleler_model.dart';
 import 'package:muziksifadir/models/sizden_gelenler_model.dart';
 import 'package:muziksifadir/services/firestore_db_service.dart';
 
@@ -47,12 +47,12 @@ class SayfalarModel with ChangeNotifier {
     return bizdensoylemesiListe;
   }
 
-  Future<List<MakaleModel>> makaleGetir() async {
+  Future<List<MakalelerModel>> makaleGetir() async {
     _state = SayfalarViewState.Busy;
     List gelenListe = await _firestoreDbService.listeGetir('makaleler');
-    List<MakaleModel> makaleListe = [];
+    List<MakalelerModel> makaleListe = [];
     gelenListe.forEach((element) {
-      makaleListe.add(MakaleModel.fromMap(element));
+      makaleListe.add(MakalelerModel.fromMap(element));
     });
     print("Makale getiriliyor");
     _state = SayfalarViewState.Idle;

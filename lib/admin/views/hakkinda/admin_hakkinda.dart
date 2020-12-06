@@ -18,6 +18,7 @@ class _AdminHakkindaState extends State<AdminHakkinda> {
   SayfalarModel _sayfalarModel;
   AdminModel _adminModel;
   bool girdiMi = false;
+  
   @override
   Widget build(BuildContext context) {
     _sayfalarModel = Provider.of<SayfalarModel>(context);

@@ -25,7 +25,7 @@ TextStyle defaultTextStyle = TextStyle(
 );
 TextStyle navBarTextStyle(DeviceScreenType deviceScreenType) {
   double navBarTitleSize =
-      deviceScreenType == DeviceScreenType.desktop ? 15 : 5;
+      deviceScreenType == DeviceScreenType.desktop ? 20 : 5;
   return TextStyle(
     fontWeight: FontWeight.w600,
     height: 1.7,

@@ -22,17 +22,17 @@ class _BizdenSoylemesiState extends State<BizdenSoylemesi> {
            Stack(
             children: [
               Container(
-                color: krem,
+                color: Colors.white,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(500),
+                          bottomRight: Radius.circular(0),
                           topRight: Radius.circular(0),
                         ),
-                        color: turuncu,
+                      //  color: krem,
                       ),
                       width: width(context) * 0.3,
                       height: 300,
@@ -49,32 +49,35 @@ class _BizdenSoylemesiState extends State<BizdenSoylemesi> {
                   ],
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                    image: AssetImage('assets/images/circle.gif'),
-                    fit: BoxFit.cover,
-                  ),
-                    //  color: suYesili,
-                    //Color(0xFFEDEDF4),
+              Positioned(
+                left: -80,
+                              child: Container(
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                      image: AssetImage('assets/images/turkuaz.png'),
+                      fit: BoxFit.cover,
                     ),
-                height: 300,
-                width: width(context),
-                alignment: Alignment(0, 0.5),
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: width(context) * 0.175,
-                    ),
-                    Text(
-                      "Bizden Söylemesi",
-                      style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black54,
+                      //  color: suYesili,
+                      //Color(0xFFEDEDF4),
                       ),
-                    ),
-                  ],
+                  height: 300,
+                  width: width(context)*0.65,
+                  alignment: Alignment(0, 0.5),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: width(context) * 0.215,
+                      ),
+                      Text(
+                        "Bizden Söylemesi",
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black54,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

@@ -54,7 +54,7 @@ class _SizdenGelenlerState extends State<SizdenGelenler> {
                               child: Container(
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                      image: AssetImage('assets/images/varlik.png'),
+                      image: AssetImage('assets/images/yesil.png'),
                       fit: BoxFit.cover,
                     ),
                       //  color: suYesili,

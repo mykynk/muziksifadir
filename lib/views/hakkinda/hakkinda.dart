@@ -67,25 +67,25 @@ class _HakkindaState extends State<Hakkinda> {
                   ..._sskList(context),
                 ]),
               ),
-              Stack(
-                children: [
-                  Container(
-                    color: _backgroundColor,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(500),
-                              topRight: Radius.circular(0),
-                            ),
-                            color: _backgroundColor,
-                          ),
-                          width: width(context) * 0.3,
-                          height: 200,
+            _goster ?   Stack(
+            children: [
+              Container(
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(0),
+                          topRight: Radius.circular(0),
                         ),
-                        /*Container(
+                      //  color: krem,
+                      ),
+                      width: width(context) * 0.3,
+                      height: 200,
+                    ),
+                    /*Container(
                       width: width(context) * 0.7,
                       decoration: BoxDecoration(
                         borderRadius:
@@ -94,39 +94,42 @@ class _HakkindaState extends State<Hakkinda> {
                       ),
                       height: 300,
                     ),*/
-                      ],
-                    ),
-                  ),
-                  Container(
-                    /* decoration: BoxDecoration(
-                    image: DecorationImage(
-                    image: AssetImage('assets/images/circle.gif'),
-                    fit: BoxFit.cover,
-                  ),
-                    //  color: suYesili,
-                    //Color(0xFFEDEDF4),
-                    ),*/
-                    height: 200,
-                    width: width(context),
-                    alignment: Alignment(0, 0.5),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: width(context) * 0.175,
-                        ),
-                        Text(
-                          _goster ? "Hakkında" : "",
-                          style: TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black54,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+              Positioned(
+                left: -80,
+                              child: Container(
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                      image: AssetImage('assets/images/sari.png'),
+                      fit: BoxFit.cover,
+                    ),
+                      //  color: suYesili,
+                      //Color(0xFFEDEDF4),
+                      ),
+                  height: 200,
+                  width: width(context)*0.65,
+                  alignment: Alignment(0, 0.5),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: width(context) * 0.215,
+                      ),
+                      Text(
+                        "Hakkında",
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black54,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ): SizedBox(),
             ],
           ))
         : Container();
