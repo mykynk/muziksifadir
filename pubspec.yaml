@@ -43,6 +43,8 @@ dependencies:
   universal_html: ^1.2.1
 
   flutter_gifimage: ^1.0.1
+  youtube_player_iframe: ^1.2.0+2
+  url_launcher: ^5.7.10
 
   
 
@@ -83,6 +85,18 @@ flutter:
         - asset: assets/fonts/OpenSans-ExtraBold.ttf
           weight: 700
         - asset: assets/fonts/OpenSans-Regular.ttf
+          weight: 400 
+    - family: Bebas Neue
+      fonts:
+        - asset: assets/fonts/BebasNeue-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/BebasNeue-Regular.ttf
+          weight: 600 
+        - asset: assets/fonts/BebasNeue-Book.ttf
+          weight: 500
+        - asset: assets/fonts/BebasNeue-Light.ttf
           weight: 400
+        - asset: assets/fonts/BebasNeue-Thin.ttf
+          weight: 300
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

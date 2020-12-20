@@ -23,10 +23,12 @@ class _HakkindaState extends State<Hakkinda> {
   bool _goster = false;
   SayfalarModel _sayfalarModel;
   HakkindaModel hakkinda;
+  double size = 0;
   @override
   void initState() {
     _controller = ScrollController();
     _controller.addListener(_scrollListener);
+    _controller.addListener(onScroll);
 
     super.initState();
   }
@@ -45,47 +47,49 @@ class _HakkindaState extends State<Hakkinda> {
     }
     return _sayfalarModel.state == SayfalarViewState.Idle
         ? Container(
+            color: Colors.white,
             child: Stack(
-            children: [
-              DraggableScrollbar.rrect(
-                controller: _controller,
-                backgroundColor: Colors.grey.withOpacity(0.7),
-                heightScrollThumb: 200.0,
-                alwaysVisibleScrollThumb: true,
-                padding: EdgeInsets.fromLTRB(0, 100, 5, 5),
-                child: ListView(controller: _controller, children: <Widget>[
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.6,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(hakkinda.photo_url))),
-                  ),
-                  ..._paragrafList(context),
-                  ..._akademisyenList(context),
-                  ..._sskList(context),
-                ]),
-              ),
-            _goster ?   Stack(
-            children: [
-              Container(
-                color: Colors.white,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+              children: [
+                DraggableScrollbar.rrect(
+                  controller: _controller,
+                  backgroundColor: Colors.grey.withOpacity(0.7),
+                  heightScrollThumb: 200.0,
+                  alwaysVisibleScrollThumb: true,
+                  padding: EdgeInsets.fromLTRB(0, 100, 5, 5),
+                  child: ListView(controller: _controller, children: <Widget>[
                     Container(
+                      height: MediaQuery.of(context).size.height * 0.6,
+                      width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(0),
-                          topRight: Radius.circular(0),
-                        ),
-                      //  color: krem,
-                      ),
-                      width: width(context) * 0.3,
-                      height: 200,
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(hakkinda.photo_url))),
                     ),
-                    /*Container(
+                    ..._paragrafList(context),
+                    ..._akademisyenList(context),
+                    ..._sskList(context),
+                  ]),
+                ),
+                _goster
+                    ? Stack(
+                        children: [
+                          Container(
+                            color: Colors.white,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                      bottomRight: Radius.circular(0),
+                                      topRight: Radius.circular(0),
+                                    ),
+                                    //  color: krem,
+                                  ),
+                                  width: width(context) * 0.3,
+                                  height: 200,
+                                ),
+                                /*Container(
                       width: width(context) * 0.7,
                       decoration: BoxDecoration(
                         borderRadius:
@@ -94,49 +98,58 @@ class _HakkindaState extends State<Hakkinda> {
                       ),
                       height: 300,
                     ),*/
-                  ],
-                ),
-              ),
-              Positioned(
-                left: -80,
-                              child: Container(
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                      image: AssetImage('assets/images/sari.png'),
-                      fit: BoxFit.cover,
-                    ),
-                      //  color: suYesili,
-                      //Color(0xFFEDEDF4),
-                      ),
-                  height: 200,
-                  width: width(context)*0.65,
-                  alignment: Alignment(0, 0.5),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: width(context) * 0.215,
-                      ),
-                      Text(
-                        "Hakkında",
-                        style: TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black54,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ): SizedBox(),
-            ],
-          ))
+                              ],
+                            ),
+                          ),
+                          
+                          Positioned(
+                            left: -80,
+                            child: AnimatedContainer(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage('assets/images/sari.png'),
+                                  fit: BoxFit.cover,
+                                ),
+                                //  color: suYesili,
+                                //Color(0xFFEDEDF4),
+                              ),
+                              height: 200,
+                              width: width(context) * size,
+                             
+                              duration: Duration(milliseconds: 100),
+                            ),
+                          ),
+                          Positioned(
+                            child: Container(
+                               height: 200,
+                               alignment: Alignment(0, 0.5),
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                      width: width(context) * 0.215,
+                                    ),
+                                    Text(
+                                      "Hakkında",
+                                      style: TextStyle(
+                                        fontSize: 40,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    : SizedBox(),
+              ],
+            ))
         : Container();
   }
 
   List<Widget> _paragrafList(BuildContext context) {
-    var paragraflar = List<Widget>();
+    var paragraflar = <Widget>[];
     paragraflar.add(Padding(
       padding: const EdgeInsets.all(20.0),
       child: Row(
@@ -167,7 +180,7 @@ class _HakkindaState extends State<Hakkinda> {
   }
 
   List<Widget> _akademisyenList(BuildContext context) {
-    var akademisyenler = List<Widget>();
+    var akademisyenler = <Widget>[];
     akademisyenler.add(Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
@@ -198,7 +211,7 @@ class _HakkindaState extends State<Hakkinda> {
   }
 
   List<Widget> _sskList(BuildContext context) {
-    var ssklar = List<Widget>();
+    var ssklar = <Widget>[];
     ssklar.add(Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
@@ -235,20 +248,29 @@ class _HakkindaState extends State<Hakkinda> {
   }
 
   _scrollListener() {
-    if (_controller.offset >= MediaQuery.of(context).size.height * 0.1 &&
+    if (_controller.offset >= MediaQuery.of(context).size.height * 0.4 &&
         !_controller.position.outOfRange) {
       setState(() {
+        size = 0.30;
         _backgroundColor = krem;
         _goster = true;
       });
     }
     // _controller.position.minScrollExtent
-    if (_controller.offset <= MediaQuery.of(context).size.height * 0.1 &&
+    if (_controller.offset <= MediaQuery.of(context).size.height * 0.4 &&
         !_controller.position.outOfRange) {
       setState(() {
         _backgroundColor = Colors.transparent;
         _goster = false;
       });
     }
+  }
+
+  onScroll() {
+    setState(() {
+
+      size = (_controller.offset * height(context) / (28 * 10)) * 0.0002;
+
+    });
   }
 }

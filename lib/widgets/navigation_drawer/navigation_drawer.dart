@@ -25,11 +25,11 @@ class NavigationDrawer extends StatelessWidget {
             icon: Icons.home,
           ),
           NavBarItem('Hakkında', HakkindaRoute, icon: Icons.photo),
-          NavBarItem(
+         /* NavBarItem(
             'Bizden Söylemesi',
             BizdenSoylemesiRoute,
             icon: Icons.home,
-          ),
+          ),*/
        //   NavBarItem('İletişim', HakkindaRoute, icon: Icons.photo),
           NavBarItem(
             'Makaleler',

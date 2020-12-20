@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:muziksifadir/constants/app_colors.dart';
 import 'package:muziksifadir/constants/size.dart';
-import 'package:muziksifadir/models/roportaj_model.dart';
+import 'package:muziksifadir/models/sizden_gelenler_model.dart';
 import 'package:muziksifadir/viewmodel/sayfalar_model.dart';
 import 'package:provider/provider.dart';
-import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
-class Roportajlar extends StatefulWidget {
-  Roportajlar({Key key}) : super(key: key);
+class SizdenGelenlerMasaustu extends StatefulWidget {
+  SizdenGelenlerMasaustu({Key key}) : super(key: key);
 
   @override
-  _RoportajlarState createState() => _RoportajlarState();
+  _SizdenGelenlerMasaustuState createState() => _SizdenGelenlerMasaustuState();
 }
 
-class _RoportajlarState extends State<Roportajlar> {
+class _SizdenGelenlerMasaustuState extends State<SizdenGelenlerMasaustu> {
   @override
   Widget build(BuildContext context) {
     final _sayfalarModel = Provider.of<SayfalarModel>(context);
     return Center(
       child: Column(
         children: [
-          Stack(
+         Stack(
             children: [
               Container(
                 color: Colors.white,
@@ -33,7 +32,7 @@ class _RoportajlarState extends State<Roportajlar> {
                           bottomRight: Radius.circular(0),
                           topRight: Radius.circular(0),
                         ),
-                        //  color: krem,
+                      //  color: krem,
                       ),
                       width: width(context) * 0.3,
                       height: 300,
@@ -52,17 +51,17 @@ class _RoportajlarState extends State<Roportajlar> {
               ),
               Positioned(
                 left: -80,
-                child: Container(
+                              child: Container(
                   decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/mor.png'),
+                      image: DecorationImage(
+                      image: AssetImage('assets/images/yesil.png'),
                       fit: BoxFit.cover,
                     ),
-                    //  color: suYesili,
-                    //Color(0xFFEDEDF4),
-                  ),
+                      //  color: suYesili,
+                      //Color(0xFFEDEDF4),
+                      ),
                   height: 300,
-                  width: width(context) * 0.65,
+                  width: width(context)*0.65,
                   alignment: Alignment(0, 0.5),
                   child: Row(
                     children: [
@@ -70,12 +69,12 @@ class _RoportajlarState extends State<Roportajlar> {
                         width: width(context) * 0.215,
                       ),
                       Text(
-                        "Röportajlar",
+                        "Sizden Gelenler",
                         style: TextStyle(
-                            fontSize: 60,
-                            fontWeight: FontWeight.w900,
-                            color: Colors.black54,
-                            fontFamily: "Bebas Neue"),
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black54,
+                        ),
                       ),
                     ],
                   ),
@@ -84,26 +83,28 @@ class _RoportajlarState extends State<Roportajlar> {
             ],
           ),
           Expanded(
-            /*
             child: Container(
               child: FutureBuilder(
-                future: _sayfalarModel.roportajGetir(),
+                future: _sayfalarModel.sizdenGelenlerGetir(),
                 builder:
                     (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                   return _sayfalarModel.state != SayfalarViewState.Busy
                       ? Container(
                           width: width(context) * 0.8,
                           child: ListView.builder(
-                            itemCount: snapshot.data.length + 9,
+                            itemCount: snapshot.data.length,
                             itemBuilder: (BuildContext context, int index) {
-                              RoportajModel oAnkiEleman = snapshot.data[0];
+                              SizdenGelenlerModel oAnkiEleman = snapshot.data[0];
                               return Container(
                                 padding: EdgeInsets.all(20),
                                 margin: EdgeInsets.fromLTRB(50, 20, 50, 0),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Today\n03:00"),
+                                    Text(
+                                          oAnkiEleman.isim + "\n" + oAnkiEleman.soyisim,
+                                        ),
+                                  //  Text("Today\n03:00"),
                                     Container(
                                       margin:
                                           EdgeInsets.symmetric(horizontal: 20),
@@ -117,12 +118,16 @@ class _RoportajlarState extends State<Roportajlar> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          oAnkiEleman.baslik,
-                                        ),
-                                        SizedBox(height: 10),
-                                        Text(
-                                          oAnkiEleman.yazi,
+                                      /*  Text(
+                                          oAnkiEleman.isim + " " + oAnkiEleman.soyisim,
+                                        ),*/
+                                        //SizedBox(height: 10),
+                                        Container(
+                                          height: 100,
+                                          width: width(context) * 0.55,
+                                          child: Text(
+                                            oAnkiEleman.yorum,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -135,13 +140,7 @@ class _RoportajlarState extends State<Roportajlar> {
                       : Center(child: CircularProgressIndicator());
                 },
               ),
-            ),*/
-            child :Container(
-                color: Colors.white,
-                child: Center(
-                    child: Text(
-                  "Çok yakında sizlerle.",
-                ))),
+            ),
           ),
         ],
       ),

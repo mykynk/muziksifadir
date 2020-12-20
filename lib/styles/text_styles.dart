@@ -25,11 +25,13 @@ TextStyle defaultTextStyle = TextStyle(
 );
 TextStyle navBarTextStyle(DeviceScreenType deviceScreenType) {
   double navBarTitleSize =
-      deviceScreenType == DeviceScreenType.desktop ? 20 : 5;
+      deviceScreenType == DeviceScreenType.desktop ? 27.5 : 5;
   return TextStyle(
     fontWeight: FontWeight.w600,
     height: 1.7,
     fontSize: navBarTitleSize,
-    color: Colors.black87,
+    
+    color: Color(0xFF1E1E1E),
+    fontFamily: "Bebas Neue"
   );
 }

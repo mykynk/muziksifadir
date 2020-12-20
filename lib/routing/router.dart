@@ -45,12 +45,12 @@ Route<dynamic> generateRoute(RouteSettings settings) {
           ),
           settings.name);
 
-    case BizdenSoylemesiRoute:
+    /*case BizdenSoylemesiRoute:
       return _getPageRoute(
           ChangeNotifierProvider<SayfalarModel>(
               create: (BuildContext context) => SayfalarModel(),
               child: BizdenSoylemesi()),
-          settings.name);
+          settings.name);*/
 
     case RoportajlarRoute:
       return _getPageRoute(

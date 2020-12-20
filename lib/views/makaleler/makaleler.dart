@@ -19,7 +19,7 @@ class _MakalelerState extends State<Makaleler> {
     return Center(
       child: Column(
         children: [
-           Stack(
+          Stack(
             children: [
               Container(
                 color: Colors.white,
@@ -32,7 +32,7 @@ class _MakalelerState extends State<Makaleler> {
                           bottomRight: Radius.circular(0),
                           topRight: Radius.circular(0),
                         ),
-                      //  color: krem,
+                        //  color: krem,
                       ),
                       width: width(context) * 0.3,
                       height: 300,
@@ -51,17 +51,17 @@ class _MakalelerState extends State<Makaleler> {
               ),
               Positioned(
                 left: -80,
-                              child: Container(
+                child: Container(
                   decoration: BoxDecoration(
-                      image: DecorationImage(
+                    image: DecorationImage(
                       image: AssetImage('assets/images/lacivert.png'),
                       fit: BoxFit.cover,
                     ),
-                      //  color: suYesili,
-                      //Color(0xFFEDEDF4),
-                      ),
+                    //  color: suYesili,
+                    //Color(0xFFEDEDF4),
+                  ),
                   height: 300,
-                  width: width(context)*0.65,
+                  width: width(context) * 0.65,
                   alignment: Alignment(0, 0.5),
                   child: Row(
                     children: [
@@ -83,7 +83,8 @@ class _MakalelerState extends State<Makaleler> {
             ],
           ),
           Expanded(
-            child: Container(
+            child:
+                /*Container(
               child: FutureBuilder(
                 future: _sayfalarModel.makaleGetir(),
                 builder:
@@ -133,7 +134,13 @@ class _MakalelerState extends State<Makaleler> {
                       : Center(child: CircularProgressIndicator());
                 },
               ),
-            ),
+            ),*/
+                Container(
+                    color: Colors.white,
+                    child: Center(
+                        child: Text(
+                      "Çok yakında sizlerle.",
+                    ))),
           ),
         ],
       ),

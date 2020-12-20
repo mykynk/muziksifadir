@@ -59,6 +59,18 @@ class SayfalarModel with ChangeNotifier {
     //  notifyListeners();
     return makaleListe;
   }
+ Future<List<MakalelerModel>> roportajGetir() async {
+    _state = SayfalarViewState.Busy;
+    List gelenListe = await _firestoreDbService.listeGetir('roportajler');
+    List<MakalelerModel> roportajListe = [];
+    gelenListe.forEach((element) {
+      roportajListe.add(MakalelerModel.fromMap(element));
+    });
+    print("Makale getiriliyor");
+    _state = SayfalarViewState.Idle;
+    //  notifyListeners();
+    return roportajListe;
+  }
 
   Future<List<SizdenGelenlerModel>> sizdenGelenlerGetir() async {
     _state = SayfalarViewState.Busy;

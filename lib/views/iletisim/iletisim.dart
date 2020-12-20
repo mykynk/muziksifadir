@@ -8,8 +8,7 @@ class SocialMediaIcons extends StatefulWidget {
   SocialMediaIconsState createState() => SocialMediaIconsState();
 }
 
-class SocialMediaIconsState extends State<SocialMediaIcons>
-{
+class SocialMediaIconsState extends State<SocialMediaIcons> {
   @override
   void initState() {
     super.initState();
@@ -41,12 +40,23 @@ class SocialMediaIconsState extends State<SocialMediaIcons>
             onTap: () => _handleOnPressed(),
           ),
         ),*/
-        SocialItem(image: 'assets/icons/instagram.png'),
-        SocialItem(image: 'assets/icons/youtube.png'),
-        SocialItem(image: 'assets/icons/gmail.png'),
+        SocialItem(
+          image: 'assets/icons/instagram.png',
+          url: "https://www.instagram.com/muziksifadir/",
+        ),
+        SocialItem(
+            image: 'assets/icons/youtube.png',
+            url: "https://www.youtube.com/channel/UCkUyc19YZHLj2B-ef9FrSmQ"),
+        SocialItem(
+          image: 'assets/icons/gmail.png',
+          url: Uri(
+              scheme: 'mailto',
+              path: 'muziksifadir@gmail.com',
+              queryParameters: {
+                'subject': 'Konu :'
+              }).toString(),
+        )
       ],
     );
   }
-
- 
 }

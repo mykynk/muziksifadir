@@ -14,6 +14,7 @@ class NavigationBarMasaustu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 100,
+     // color: Colors.white.withOpacity(0.3),
       alignment: Alignment.center,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -26,17 +27,17 @@ class NavigationBarMasaustu extends StatelessWidget {
               alignment: WrapAlignment.center,
               crossAxisAlignment: WrapCrossAlignment.center,
               children: <Widget>[
-                NavBarItem('Ana Sayfa', AnaSayfaRoute),
-                SizedBox(width: width(context) * 0.03),
-                NavBarItem('Hakkında', HakkindaRoute),
-                SizedBox(width: width(context) * 0.03),
-                NavBarItem('Bizden Söylemesi', BizdenSoylemesiRoute),
-                SizedBox(width: width(context) * 0.03),
-                NavBarItem('Makaleler', MakalelerRoute),
-                SizedBox(width: width(context) * 0.03),
-                NavBarItem('Sizden Gelenler', SizdenGelenlerRoute),
-                SizedBox(width: width(context) * 0.03),
-                NavBarItem('Röportajlar', RoportajlarRoute),
+                NavBarItem('ANA SAYFA', AnaSayfaRoute),
+                SizedBox(width: width(context) * 0.02),
+                NavBarItem('HAKKINDA', HakkindaRoute),
+                SizedBox(width: width(context) * 0.02),
+              /*  NavBarItem('BİZDEN SÖYLEMESİ', BizdenSoylemesiRoute),
+                SizedBox(width: width(context) * 0.02),*/
+                NavBarItem('MAKALELER', MakalelerRoute),
+                SizedBox(width: width(context) * 0.02),
+                NavBarItem('SİZDEN GELENLER', SizdenGelenlerRoute),
+                SizedBox(width: width(context) * 0.02),
+                NavBarItem('RÖPORTAJLAR', RoportajlarRoute),
               ],
             ),
           ),
