@@ -81,6 +81,7 @@ class _AdminHakkindaState extends State<AdminHakkinda> {
                             bool sonuc = await _sayfalarModel
                                 .hakkindaKaydet(paragrafList);
                             if (sonuc) {
+                              paragrafList.clear();
                               debugPrint("KAYDEDİLDİ");
                             }
                           }
@@ -150,9 +151,10 @@ class _AdminHakkindaState extends State<AdminHakkinda> {
           textList.insert(textList.length - 1, null);
           turList.insert(turList.length - 1, Tur.paragraf);
         } else {
+          debugPrint("index : " + index.toString());
           textList.removeAt(index);
           turList.removeAt(index + 1);
-          paragrafList.removeAt(index);
+         // paragrafList.removeAt(index);
         }
         setState(() {});
       },
