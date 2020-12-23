@@ -28,7 +28,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
     ),
   );
   ScrollController _controller;
-  double _offset = 0, size = 0.50;
+  double _offset = 0, size = 0.50, sizeNavBar = 0.25;
   bool girdiMi = false;
   @override
   void initState() {
@@ -51,8 +51,8 @@ class _AnaSayfaState extends State<AnaSayfa> {
 
     return _sayfalarModel.state != SayfalarViewState.Busy
         ? Container(
-          color: Colors.white,
-                  child: Stack(
+            color: Colors.white,
+            child: Stack(
               children: [
                 Positioned(
                   left: -200,
@@ -197,10 +197,9 @@ Müzik şifadır, şifa niyetine!
                     right: 0,
                     child: AnimatedContainer(
                       height: 100,
-                      width: width(context)* size *3,
+                      width: width(context) * sizeNavBar,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          
                           borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(100),
                               topLeft: Radius.circular(0))),
@@ -208,7 +207,7 @@ Müzik şifadır, şifa niyetine!
                     )),
               ],
             ),
-        )
+          )
         : Container();
   }
 
@@ -234,8 +233,8 @@ Müzik şifadır, şifa niyetine!
   onScroll() {
     setState(() {
       if (_controller.offset < 1000 && _controller.offset > 100) {
-        size =
-            ((_controller.offset + 100) * height(context) / (28 * 10)) * 0.0002;
+        size = ((_controller.offset + 100) * height(context) / (28 * 10)) * 0.0002;
+        sizeNavBar = ((_controller.offset + 100) * height(context) / (28 * 10)) * 0.0004;
       }
     });
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:muziksifadir/locator.dart';
 import 'package:muziksifadir/models/bizden_soylemesi_model.dart';
 import 'package:muziksifadir/models/hakkinda_model/hakkinda_model.dart';
+import 'package:muziksifadir/models/hakkinda_model/paragraf_model.dart';
 import 'package:muziksifadir/models/makaleler_model.dart';
 import 'package:muziksifadir/models/sizden_gelenler_model.dart';
 import 'package:muziksifadir/services/firestore_db_service.dart';
@@ -30,8 +31,17 @@ class SayfalarModel with ChangeNotifier {
     HakkindaModel hakkinda = HakkindaModel.fromMap(gelenMap);
     print("hakkında getiriliyor");
     _state = SayfalarViewState.Idle;
-    //  notifyListeners();
+     notifyListeners();
     return hakkinda;
+  }
+
+  Future<bool> hakkindaKaydet(List paragrafList) async {
+    _state = SayfalarViewState.Busy;
+    bool kaydet = await _firestoreDbService.hakkindaKaydet(paragrafList);
+    
+    _state = SayfalarViewState.Idle;
+    //  notifyListeners();
+    return kaydet;
   }
 
   Future<List<BizdenSoylemesiModel>> bizdenSoylemesiGetir() async {
@@ -59,7 +69,8 @@ class SayfalarModel with ChangeNotifier {
     //  notifyListeners();
     return makaleListe;
   }
- Future<List<MakalelerModel>> roportajGetir() async {
+
+  Future<List<MakalelerModel>> roportajGetir() async {
     _state = SayfalarViewState.Busy;
     List gelenListe = await _firestoreDbService.listeGetir('roportajler');
     List<MakalelerModel> roportajListe = [];

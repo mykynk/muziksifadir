@@ -65,9 +65,9 @@ class _HakkindaState extends State<Hakkinda> {
                               fit: BoxFit.cover,
                               image: NetworkImage(hakkinda.photo_url))),
                     ),
-                    ..._paragrafList(context),
-                    ..._akademisyenList(context),
-                    ..._sskList(context),
+                  ..._paragrafList(context),
+               /*     ..._akademisyenList(context),
+                    ..._sskList(context),*/
                   ]),
                 ),
                 _goster
@@ -155,21 +155,18 @@ class _HakkindaState extends State<Hakkinda> {
       child: Row(
         children: [
           SizedBox(width: width(context) * 0.05),
-          Text(
-            hakkinda.baslik,
-            style: defaultTextStyle,
-          ),
+          
           SizedBox(width: width(context) * 0.05),
         ],
       ),
     ));
-    for (var i = 0; i < hakkinda.paragraflar.length; i++) {
+    for (var i = 0; i < hakkinda.paragraf.length; i++) {
       paragraflar.add(Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Row(
           children: [
             SizedBox(width: width(context) * 0.05),
-            Expanded(child: Text(hakkinda.paragraflar[i] + "\n")),
+            Expanded(child: Text(hakkinda.paragraf[i]["text"] + "\n")),
             SizedBox(width: width(context) * 0.05),
           ],
         ),
@@ -178,7 +175,7 @@ class _HakkindaState extends State<Hakkinda> {
 
     return paragraflar;
   }
-
+/*
   List<Widget> _akademisyenList(BuildContext context) {
     var akademisyenler = <Widget>[];
     akademisyenler.add(Padding(
@@ -245,7 +242,7 @@ class _HakkindaState extends State<Hakkinda> {
     }
 
     return ssklar;
-  }
+  }*/
 
   _scrollListener() {
     if (_controller.offset >= MediaQuery.of(context).size.height * 0.4 &&

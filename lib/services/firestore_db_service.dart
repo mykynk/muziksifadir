@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:muziksifadir/models/hakkinda_model/paragraf_model.dart';
 
 class FirestoreDbService {
   final Firestore _firebaseDB = Firestore.instance;
@@ -29,8 +30,19 @@ class FirestoreDbService {
   Future<Map> hakkindaGetir() async {
     final okunanMap =
         await _firebaseDB.collection('sayfalar').document('hakkinda').get();
-    
     return okunanMap.data;
+  }
+
+  Future<bool> hakkindaKaydet(List paragrafList) async {
+    List<Map> paragrafListMap = [];
+    paragrafList.forEach((paragraf) async {
+      paragrafListMap.add(paragraf.toMap());
+    });
+    await _firebaseDB
+        .collection('sayfalar')
+        .document('hakkinda')
+        .setData({"paragraf": paragrafListMap});
+    return true;
   }
 
   Future<List> listeGetir(String sayfa) async {
