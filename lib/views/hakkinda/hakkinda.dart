@@ -166,7 +166,7 @@ class _HakkindaState extends State<Hakkinda> {
         child: Row(
           children: [
             SizedBox(width: width(context) * 0.05),
-            Expanded(child: Text(hakkinda.paragraf[i]["text"] + "\n")),
+            Expanded(child: Text(hakkinda.paragraf[i]["text"] + "\n",style: hakkinda.paragraf[i]["tur"] == "Tur.yanBaslik" ?TextStyle(fontSize:  22 ,fontWeight: FontWeight.bold) : TextStyle(fontSize:  18),)),
             SizedBox(width: width(context) * 0.05),
           ],
         ),
