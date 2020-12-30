@@ -20,11 +20,10 @@ class FirestoreDbService {
     });
   }
 
-  Future<String> anaSayfaGetir() async {
+  Future<Map> anaSayfaGetir() async {
     final okunanMap =
         await _firebaseDB.collection('sayfalar').document('anasayfa').get();
-    String photoUrl = okunanMap.data['photo_url'];
-    return photoUrl;
+    return okunanMap.data;
   }
 
   Future<Map> hakkindaGetir() async {
@@ -41,6 +40,18 @@ class FirestoreDbService {
     await _firebaseDB
         .collection('sayfalar')
         .document('hakkinda')
+        .setData({"paragraf": paragrafListMap});
+    return true;
+  }
+
+  Future<bool> anaSayfaKaydet(List paragrafList) async {
+    List<Map> paragrafListMap = [];
+    paragrafList.forEach((paragraf) async {
+      paragrafListMap.add(paragraf.toMap());
+    });
+    await _firebaseDB
+        .collection('sayfalar')
+        .document('anasayfa')
         .setData({"paragraf": paragrafListMap});
     return true;
   }

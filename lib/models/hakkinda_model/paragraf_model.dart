@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:muziksifadir/admin/views/hakkinda/admin_hakkinda.dart';
+enum Tur { paragraf, baslik, yanBaslik }
 
 class Paragraf {
   final String text;

@@ -7,7 +7,7 @@ import 'package:muziksifadir/viewmodel/sayfalar_model.dart';
 import 'package:provider/provider.dart';
 import 'package:image_picker_web/image_picker_web.dart';
 
-enum Tur { paragraf, baslik, yanBaslik }
+
 
 class AdminHakkinda extends StatefulWidget {
   AdminHakkinda({Key key}) : super(key: key);

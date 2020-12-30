@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:muziksifadir/locator.dart';
+import 'package:muziksifadir/models/anasayfa_model.dart';
 import 'package:muziksifadir/models/bizden_soylemesi_model.dart';
 import 'package:muziksifadir/models/hakkinda_model/hakkinda_model.dart';
 import 'package:muziksifadir/models/hakkinda_model/paragraf_model.dart';
@@ -15,15 +16,24 @@ class SayfalarModel with ChangeNotifier {
 
   SayfalarViewState get state => _state;
 
-  Future<String> anaSayfaGetir() async {
+  Future<AnaSayfaModel> anaSayfaGetir() async {
     _state = SayfalarViewState.Busy;
-    String gelenString = await _firestoreDbService.anaSayfaGetir();
+    Map gelenMap = await _firestoreDbService.anaSayfaGetir();
+    AnaSayfaModel anaSayfa = AnaSayfaModel.fromMap(gelenMap);
     print("anaSayfa getiriliyor");
+    _state = SayfalarViewState.Idle;
+    //  notifyListeners();
+    return anaSayfa;
+  }
+  Future<bool> anaSayfaKaydet(List paragrafList) async {
+    _state = SayfalarViewState.Busy;
+    bool kaydet = await _firestoreDbService.anaSayfaKaydet(paragrafList);
 
     _state = SayfalarViewState.Idle;
     //  notifyListeners();
-    return gelenString;
+    return kaydet;
   }
+
 
   Future<HakkindaModel> hakkindaGetir() async {
     _state = SayfalarViewState.Busy;
@@ -31,14 +41,14 @@ class SayfalarModel with ChangeNotifier {
     HakkindaModel hakkinda = HakkindaModel.fromMap(gelenMap);
     print("hakkında getiriliyor");
     _state = SayfalarViewState.Idle;
-     notifyListeners();
+    notifyListeners();
     return hakkinda;
   }
 
   Future<bool> hakkindaKaydet(List paragrafList) async {
     _state = SayfalarViewState.Busy;
     bool kaydet = await _firestoreDbService.hakkindaKaydet(paragrafList);
-    
+
     _state = SayfalarViewState.Idle;
     //  notifyListeners();
     return kaydet;
