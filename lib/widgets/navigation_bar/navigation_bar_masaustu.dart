@@ -33,15 +33,16 @@ class NavigationBarMasaustu extends StatelessWidget {
                 SizedBox(width: width(context) * 0.02),
               /*  NavBarItem('BİZDEN SÖYLEMESİ', BizdenSoylemesiRoute),
                 SizedBox(width: width(context) * 0.02),*/
-                NavBarItem('MAKALELER', MakalelerRoute),
+                NavBarItem('BLOG', BloglarRoute),
                 SizedBox(width: width(context) * 0.02),
                 NavBarItem('SİZDEN GELENLER', SizdenGelenlerRoute),
                 SizedBox(width: width(context) * 0.02),
-                NavBarItem('RÖPORTAJLAR', RoportajlarRoute),
+             //   NavBarItem('RÖPORTAJLAR', RoportajlarRoute),
               ],
             ),
           ),
           SocialMediaIcons(),
+          SizedBox(width: 20,),
         ],
       ),
     );

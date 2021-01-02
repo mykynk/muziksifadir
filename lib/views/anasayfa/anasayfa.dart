@@ -1,11 +1,11 @@
 import 'package:draggable_scrollbar/draggable_scrollbar.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:muziksifadir/constants/size.dart';
+import 'package:muziksifadir/models/anasayfa_model.dart';
 import 'package:muziksifadir/viewmodel/sayfalar_model.dart';
 import 'package:provider/provider.dart';
-import 'dart:html' as html;
-import 'dart:js' as js;
-import 'dart:ui' as ui;
 
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
@@ -17,12 +17,14 @@ class AnaSayfa extends StatefulWidget {
 }
 
 class _AnaSayfaState extends State<AnaSayfa> {
+  AnaSayfaModel anaSayfa;
+
   SayfalarModel _sayfalarModel;
   YoutubePlayerController _controllerYoutube = YoutubePlayerController(
     initialVideoId: 'fS_cYA9_WK8',
     params: YoutubePlayerParams(
       // playlist: ['nPt8bK2gbaU', 'gQDByCdjUXw'], // Defining custom playlist
-      startAt: Duration(seconds: 30),
+      startAt: Duration(seconds: 0),
       showControls: true,
       showFullscreenButton: true,
     ),
@@ -43,11 +45,14 @@ class _AnaSayfaState extends State<AnaSayfa> {
     if (!girdiMi) {
       _sayfalarModel.anaSayfaGetir().then((value) {
         setState(() {
-          // anasayfa = value;
+          anaSayfa = value;
           girdiMi = true;
         });
       });
     }
+    // if (Scaffold.of(context).isDrawerOpen) {
+    //   print("open");
+    // }
 
     return _sayfalarModel.state != SayfalarViewState.Busy
         ? Container(
@@ -83,9 +88,10 @@ class _AnaSayfaState extends State<AnaSayfa> {
                       height: 150,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(width: width(context) * 0.03),
+                        SizedBox(width: width(context) * 0.015),
                         Container(
                           decoration: BoxDecoration(
                               color: Colors.white.withOpacity(0.9),
@@ -107,87 +113,19 @@ class _AnaSayfaState extends State<AnaSayfa> {
                               ),
                               SizedBox(width: width(context) * 0.05),
                               Container(
-                                width: width(context) * 0.825,
+                                width: width(context) * 0.9,
                                 child: Column(
                                   children: [
-                                    SizedBox(height: height(context) * 0.05),
-                                    Text(
-                                      """Merhaba Kıymetli Dostlar,
- 
-Yepyeni bir site ile karşınızdayız. Müziği, müziğin güzelliğini ve iyileştirici gücünü birlikte keşfetmek üzere bir yolculuğa çıktık ve sizleri de bu yolculuğa davet ediyoruz. 
-
-Hayatın her döneminde, müziğin; eğlenme, dinlenme, eğitim ve haz aracı gibi değişik duyguları tatmin etme ve dile getirme özelliğinin yanında bilimsel, sanatsal ve kültürel işlevleri olduğu bilinmekte, bu durum müziği insanlık sosyolojisinde önemli bir yere taşımaktadır. Müzik sanat dallarından biri olmakla birlikte, bireyin kendini ve becerilerini geliştirmesi için bir araçtır.
-
-Müzik, bilindiği üzere zamanın ötesine geçer ve dünyadaki tüm topluluklarda mevcuttur. Nitekim tam da burada Nietzsche’ nin bir sözünü eklemek istiyorum: “ Müzik olmadan hayat bir hata olur”. Çünkü bizi müziğin ritmini takip etmeye yönelten doğal bir içgüdüye sahibiz. 
-
-İbn-i Sina’ ya göre ise ses, varlığımız için zaruridir. Müzik bestelerini bize hoş gösteren, işitme gücümüz değil, o besteden çeşitli telkinler çıkaran idrak yeteneğimizdir. 
-
-İbn-i Sina’ nın etkisinde kalan Osmanlı saray hekimi Musa bin Hamun, Kanunî Sultan Süleyman’ a ithaf ettiği diş hekimliğine ait Türkçe eserinde diş hastalıklarının müzikle tedavisinden söz eder, çocukların müzikle uyutulmasını önerir.
-
-Beyindeki müziğe yanıt veren yapılar, dile yanıt veren yapılardan daha önce gelişti. Çocuklara dikkat edelim, konuşmaya başlamamış olsalar dahi sevdikleri bir şarkıyı duyduklarında hareket eder ve ellerini çırparlar. Hareket ve beden aracılığı ile duygularımızı iletme, ifade etme ihtiyacımızla ilgili spontane tepkiler müzik ile birlikte doğar. 
-
-Farklı kültürlerden insanların farklı müzik türlerini dinlerken aynı şekilde duygusal tepki verdikleri bilimsel çalışmalarda keşfedilmiştir. İşte bu, müziğin evrensel doğası göz önünde bulundurulduğunda, MÜZİK TERAPİSİ tüm geçmişlere ve yaşlara büyülü bir şekilde ulaşır. 
-
-Müzik Terapisi, hasta/danışanların iyileşmeyi teşvik etmek, yaşam kalitesini yükseltmek için müzikal müdahalelerle müziği, müziğin unsurlarını ve müzik aktivitelerini kullanan kanıta dayalı klinik ortamda uygulanan terapötik amaçla kullanılan Geleneksel Tamamlayıcı ve Fonksiyonel Tıp uzmanlık alanıdır.
-
-En çok merak edilen konu ise Ses ve Müzik Terapist kimdir ve kimlere müzik terapi uygulanabilir? 
-
-Bu konulara da hemen açıklık getireyim. 
-
-
-Müzik Terapist kimdir, kimler Müzik Terapist olabilir 
-
-Müzik terapist, hasta/ danışanların tanılarıyla zihinsel ve fiziksel olarak başa çıkmaları için onlara yardımcı olan kişidir.
-
-MÜZİK TERAPİ, ilgili yasa ve yönetmeliğe göre uygulamaya yetkili personel olarak T.C. Sağlık Bakanlığı tarafından onaylanmış sertifika sahibi tabip ve tabip gözetiminde sağlık meslek mensupları ile müzik eğitimi almış kişiler tarafından uygulanır. 
-
-
-Müzik Terapi kimlere uygulanır, kimlere uygulanmaz
-
-Herhangi bir ilaç veya madde kullanılmadığından, müzik terapi sağlığı tehdit edebilecek önemli bir risk oluşturmaz. 
-
-Yine de bazı özel durumlarda, örneğin işitme güçlüğü çeken hastalarda, belirgin mental-ruhsal bozukluğu veya madde bağımlılığı olan bireylerde daha dikkatli olunmalıdır. Özellikle terapistin yeterince güven veren bir terapötik ilişki kuramaması durumunda, uygulamadan hoşlanmama, rahatsız-huzursuz olma ya da korkma şeklindeki sorunlarla karşılaşılabilmektedir. Böyle durumlarda müzik terapistinin daha özenli ve dikkatli olması, tıbbi tedaviyi yürüten ilgili hekimle yakın bir iletişim içinde bulunması gerekmektedir. 
-
-Yetkili ve deneyimli bir müzik terapisti, istenmeyen durumların oluşmasını engelleyecek önlemleri alarak terapi sürecini kişiye uygun şekilde düzenlemekle yükümlüdür.
-
-
-Nasıl Uygulanır?
-
-Müzik terapi uygulamalarının neredeyse tüm ruhsal ve bedensel işlevlerimizi düzenlemeye, geliştirmeye ve pekiştirmeye katkı sağlamasının nedeni, uygulamalarda temel araçlardan birisi olarak kullanılan müziğin veya müziği oluşturan titreşim, ses, melodi, ritim, tempo gibi bileşenlerin hareket, duyu ve algı, dikkat, bellek, dil gibi bilişsel becerilerle ilgili işlemleri yürüten sistemlerle kolayca etkileşime girebilmesidir. 
-
-Müzik beyindeki algı, dikkat, düşünme, öğrenme, dil, konuşma, hareket ve beden kontrolü ile ilgili işlemleri uyarmak ve desteklemek yanında hormon salınımı üzerinde de düzenleyici etkilere sahiptir. Böylesine geniş etkileşimleri içeren müzik terapi uygulamalarında doğal olarak her bireye aynı şekilde uygulanan tek ve standart bir yöntem söz konusu değildir. Uygulamaların nasıl yapıldığını anlamayı kolaylaştırmak için, müzik terapi yöntemlerini pasif ve aktif yöntemler olarak gruplandırabiliriz. 
-
-Ancak, pasif müzik terapi uygulamalarında bile yöntem, sadece kişiye müzik dinletmek ya da konser vermek şeklinde değildir. 
-
-Dinletilecek müziğin seçiminde veya özgün olarak üretilmesinde terapiye katılacak bireyin sorunlarını, gereksinimlerini, fiziksel, sosyal ve psikolojik durumunu, geçmiş müzik beğenilerini-deneyimlerini analiz ederek bireye özgü terapi sürecinin aşamalarına ilişkin ayrıntıları plânlamak, uygulamanın etkilerini çeşitli aşamalarda ve terapi sonunda kanıta dayalı yöntemlerle değerlendirmek gibi gereklilikler söz konusudur. Aktif müzik terapi yaklaşımında kişinin bir enstrüman, örneğin vurmalı bir çalgı kullanarak müziksel eylemlere katılımından, doğaçlama yapma, müzik-şarkı oluşturma, seansların çözüm ve analizine kadar geniş bir yelpaze oluşturan çok çeşitli yöntemler kullanılır. 
-
-KISACASI;  
-MÜZİK TERAPİ, TERAPİSTİN KİŞİYE UYGULADIĞI DEĞİL, 
-ONUNLA BİRLİKTE GERÇEKLEŞTİRDİĞİ BİR TERAPİ SÜRECİDİR. (Ş.Torun, Prof.)
-
-
-Diliyorum ki, merak ettiğiniz tüm sorulara cevap verebilmişizdir. Konfüçyüs, müziğin değeri, önemi, kişiler ve toplumlar üzerinde etkisini ne de güzel ifade etmiş:
-“Bir milletin mutlu ve ahlaklı bir şekilde idare edilip edilmediğini anlamak isterseniz o memleketin müziğini dinleyiniz. Müzik devlet kurar, devlet yıkar.”
-
-Müzik, hem bireysel hem de toplumsal kültürü ve kültürel özellikleri oluşturduğu, geliştirdiği, zenginleştirdiği gibi; hem beden hem de ruh sağlığımızı modern tıbba eşlik ederek İYİ eder. 
-
-Sağlıkla… Huzurla… Ve Müzikle kalın.
-
-Müzik şifadır, şifa niyetine!
-""",
-                                      style: TextStyle(
-                                        color: Color(0xFF232323),
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                    SizedBox(width: width(context) * 0.015),
+                                    SizedBox(height: height(context) * 0.025),
+                                    ..._paragrafList(context),
+                                    SizedBox(height: height(context) * 0.015),
                                   ],
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        SizedBox(width: width(context) * 0.03),
+                        SizedBox(width: width(context) * 0.015),
                       ],
                     ),
                   ]),
@@ -233,9 +171,45 @@ Müzik şifadır, şifa niyetine!
   onScroll() {
     setState(() {
       if (_controller.offset < 1000 && _controller.offset > 100) {
-        size = ((_controller.offset + 100) * height(context) / (28 * 10)) * 0.0002;
-        sizeNavBar = ((_controller.offset + 100) * height(context) / (28 * 10)) * 0.0004;
+        double temp =
+            ((_controller.offset + 100) * height(context) / (28 * 10)) * 0.0004;
+            if(temp>0.5){
+
+        size = temp;
+            }
+        sizeNavBar =
+            ((_controller.offset + 100) * height(context) / (28 * 10)) * 0.0004;
       }
     });
+  }
+
+  List<Widget> _paragrafList(BuildContext context) {
+    var paragraflar = <Widget>[];
+
+    for (var i = 0; i < anaSayfa.paragraf.length; i++) {
+      paragraflar.add(Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Row(
+          children: [
+            SizedBox(width: width(context) * 0.01),
+            Expanded(
+              child: Text(
+                anaSayfa.paragraf[i]["text"] + "\n",
+                style: anaSayfa.paragraf[i]["tur"] == "Tur.yanBaslik"
+                    ? TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black.withOpacity(0.65))
+                    : TextStyle(
+                        fontSize: 18, color: Colors.black.withOpacity(0.8)),
+              ),
+            ),
+            SizedBox(width: width(context) * 0.01),
+          ],
+        ),
+      ));
+    }
+
+    return paragraflar;
   }
 }

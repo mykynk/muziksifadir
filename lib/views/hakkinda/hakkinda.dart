@@ -57,16 +57,19 @@ class _HakkindaState extends State<Hakkinda> {
                   alwaysVisibleScrollThumb: true,
                   padding: EdgeInsets.fromLTRB(0, 100, 5, 5),
                   child: ListView(controller: _controller, children: <Widget>[
+                    SizedBox(height: 100,),
                     Container(
                       height: MediaQuery.of(context).size.height * 0.6,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(hakkinda.photo_url))),
+                              fit: BoxFit.contain,
+                              // image: NetworkImage(hakkinda.photo_url),
+                              image: AssetImage("assets/images/hilalozdemir.jpeg"),
+                              )),
                     ),
-                  ..._paragrafList(context),
-               /*     ..._akademisyenList(context),
+                    ..._paragrafList(context),
+                    /*     ..._akademisyenList(context),
                     ..._sskList(context),*/
                   ]),
                 ),
@@ -101,7 +104,6 @@ class _HakkindaState extends State<Hakkinda> {
                               ],
                             ),
                           ),
-                          
                           Positioned(
                             left: -80,
                             child: AnimatedContainer(
@@ -115,27 +117,26 @@ class _HakkindaState extends State<Hakkinda> {
                               ),
                               height: 200,
                               width: width(context) * size,
-                             
                               duration: Duration(milliseconds: 100),
                             ),
                           ),
                           Positioned(
                             child: Container(
-                               height: 200,
-                               alignment: Alignment(0, 0.5),
+                              height: 200,
+                              alignment: Alignment(0, 0.5),
                               child: Row(
                                 children: [
                                   SizedBox(
-                                      width: width(context) * 0.215,
+                                    width: width(context) * 0.215,
+                                  ),
+                                  Text(
+                                    "Hakkında",
+                                    style: TextStyle(
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black54,
                                     ),
-                                    Text(
-                                      "Hakkında",
-                                      style: TextStyle(
-                                        fontSize: 40,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black54,
-                                      ),
-                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -155,7 +156,6 @@ class _HakkindaState extends State<Hakkinda> {
       child: Row(
         children: [
           SizedBox(width: width(context) * 0.05),
-          
           SizedBox(width: width(context) * 0.05),
         ],
       ),
@@ -166,7 +166,14 @@ class _HakkindaState extends State<Hakkinda> {
         child: Row(
           children: [
             SizedBox(width: width(context) * 0.05),
-            Expanded(child: Text(hakkinda.paragraf[i]["text"] + "\n",style: hakkinda.paragraf[i]["tur"] == "Tur.yanBaslik" ?TextStyle(fontSize:  22 ,fontWeight: FontWeight.bold) : TextStyle(fontSize:  18),)),
+            Expanded(
+              child: Text(
+                hakkinda.paragraf[i]["text"] + "\n",
+                style: hakkinda.paragraf[i]["tur"] == "Tur.yanBaslik"
+                     ? TextStyle(fontSize: 22, fontWeight: FontWeight.bold,color: Colors.black.withOpacity(0.65))
+                    : TextStyle(fontSize: 18,color: Colors.black.withOpacity(0.8)),
+              ),
+            ),
             SizedBox(width: width(context) * 0.05),
           ],
         ),
@@ -245,7 +252,7 @@ class _HakkindaState extends State<Hakkinda> {
   }*/
 
   _scrollListener() {
-    if (_controller.offset >= MediaQuery.of(context).size.height * 0.4 &&
+    if (_controller.offset >= MediaQuery.of(context).size.height * 0.1 &&
         !_controller.position.outOfRange) {
       setState(() {
         size = 0.30;
@@ -254,7 +261,7 @@ class _HakkindaState extends State<Hakkinda> {
       });
     }
     // _controller.position.minScrollExtent
-    if (_controller.offset <= MediaQuery.of(context).size.height * 0.4 &&
+    if (_controller.offset <= MediaQuery.of(context).size.height * 0.05 &&
         !_controller.position.outOfRange) {
       setState(() {
         _backgroundColor = Colors.transparent;
@@ -265,9 +272,7 @@ class _HakkindaState extends State<Hakkinda> {
 
   onScroll() {
     setState(() {
-
       size = (_controller.offset * height(context) / (28 * 10)) * 0.0002;
-
     });
   }
 }

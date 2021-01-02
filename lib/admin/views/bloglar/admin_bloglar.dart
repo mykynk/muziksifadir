@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AdminMakaleler extends StatefulWidget {
-  AdminMakaleler({Key key}) : super(key: key);
+class AdminBloglar extends StatefulWidget {
+  AdminBloglar({Key key}) : super(key: key);
 
   @override
-  _AdminMakalelerState createState() => _AdminMakalelerState();
+  _AdminBloglarState createState() => _AdminBloglarState();
 }
 
-class _AdminMakalelerState extends State<AdminMakaleler> {
+class _AdminBloglarState extends State<AdminBloglar> {
   
   @override
   Widget build(BuildContext context) {

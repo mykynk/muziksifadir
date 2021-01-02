@@ -44,10 +44,10 @@ class _AdminControlPanelState extends State<AdminControlPanel> {
                               AdminControlPanelRoute + BizdenSoylemesiRoute,
                         ),
                         ControlPanelItem(
-                            title: "Makaleler",
+                            title: "Blog",
                             icon: Icons.book,
                             navigationPath:
-                                AdminControlPanelRoute + MakalelerRoute),
+                                AdminControlPanelRoute + BloglarRoute),
                         ControlPanelItem(
                           title: "Sizden Gelenler",
                           icon: Icons.comment,

@@ -9,6 +9,7 @@ class NavigationDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      
       width: 300,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -24,7 +25,7 @@ class NavigationDrawer extends StatelessWidget {
             AnaSayfaRoute,
             icon: Icons.home,
           ),
-          NavBarItem('Hakkında', HakkindaRoute, icon: Icons.photo),
+          NavBarItem('Hakkında', HakkindaRoute, icon: Icons.account_circle),
          /* NavBarItem(
             'Bizden Söylemesi',
             BizdenSoylemesiRoute,
@@ -32,11 +33,11 @@ class NavigationDrawer extends StatelessWidget {
           ),*/
        //   NavBarItem('İletişim', HakkindaRoute, icon: Icons.photo),
           NavBarItem(
-            'Makaleler',
-            MakalelerRoute,
-            icon: Icons.home,
+            'Blog',
+            BloglarRoute,
+            icon: Icons.my_library_books,
           ),
-          NavBarItem('Sizden Gelenler', SizdenGelenlerRoute, icon: Icons.photo),
+          NavBarItem('Sizden Gelenler', SizdenGelenlerRoute, icon: Icons.mark_email_read),
         ],
       ),
     );
@@ -47,6 +48,6 @@ class NavigationDrawer extends StatelessWidget {
  * Hakkında
  * BizdenSoylemesi
  * İletişim
- * Makaleler
+ * Bloglar
  * Sizden Gelenler
  */

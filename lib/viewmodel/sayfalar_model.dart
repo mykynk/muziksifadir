@@ -4,7 +4,7 @@ import 'package:muziksifadir/models/anasayfa_model.dart';
 import 'package:muziksifadir/models/bizden_soylemesi_model.dart';
 import 'package:muziksifadir/models/hakkinda_model/hakkinda_model.dart';
 import 'package:muziksifadir/models/hakkinda_model/paragraf_model.dart';
-import 'package:muziksifadir/models/makaleler_model.dart';
+import 'package:muziksifadir/models/bloglar_model.dart';
 import 'package:muziksifadir/models/sizden_gelenler_model.dart';
 import 'package:muziksifadir/services/firestore_db_service.dart';
 
@@ -67,12 +67,12 @@ class SayfalarModel with ChangeNotifier {
     return bizdensoylemesiListe;
   }
 
-  Future<List<MakalelerModel>> makaleGetir() async {
+  Future<List<BloglarModel>> makaleGetir() async {
     _state = SayfalarViewState.Busy;
-    List gelenListe = await _firestoreDbService.listeGetir('makaleler');
-    List<MakalelerModel> makaleListe = [];
+    List gelenListe = await _firestoreDbService.listeGetir('bloglar');
+    List<BloglarModel> makaleListe = [];
     gelenListe.forEach((element) {
-      makaleListe.add(MakalelerModel.fromMap(element));
+      makaleListe.add(BloglarModel.fromMap(element));
     });
     print("Makale getiriliyor");
     _state = SayfalarViewState.Idle;
@@ -80,12 +80,12 @@ class SayfalarModel with ChangeNotifier {
     return makaleListe;
   }
 
-  Future<List<MakalelerModel>> roportajGetir() async {
+  Future<List<BloglarModel>> roportajGetir() async {
     _state = SayfalarViewState.Busy;
     List gelenListe = await _firestoreDbService.listeGetir('roportajler');
-    List<MakalelerModel> roportajListe = [];
+    List<BloglarModel> roportajListe = [];
     gelenListe.forEach((element) {
-      roportajListe.add(MakalelerModel.fromMap(element));
+      roportajListe.add(BloglarModel.fromMap(element));
     });
     print("Makale getiriliyor");
     _state = SayfalarViewState.Idle;

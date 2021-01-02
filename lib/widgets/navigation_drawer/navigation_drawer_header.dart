@@ -8,18 +8,18 @@ class NavigationDrawerHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 150,
-      color: primaryColor,
+      color: turuncu,
       alignment: Alignment.center,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Text(
-            'SKILL UP NOW',
+            'MÜZİK ŞİFADIR',
             style: TextStyle(
                 fontSize: 18, fontWeight: FontWeight.w800, color: Colors.white),
           ),
           Text(
-            'TAP HERE',
+            'ŞİFA NİYETİNE',
             style: TextStyle(
               color: Colors.white,
             ),

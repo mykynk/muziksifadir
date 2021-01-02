@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:muziksifadir/admin/views/anasayfa/admin_anasayfa.dart';
 import 'package:muziksifadir/admin/views/bizdensoylemesi/admin_bizden_soylemesi.dart';
 import 'package:muziksifadir/admin/views/hakkinda/admin_hakkinda.dart';
-import 'package:muziksifadir/admin/views/makaleler/admin_makaleler.dart';
+import 'package:muziksifadir/admin/views/bloglar/admin_bloglar.dart';
 import 'package:muziksifadir/admin/views/roportajlar/admin_roportajlar.dart';
 import 'package:muziksifadir/admin/views/sizdengelenler/admin_sizdengelenler.dart';
 import 'package:muziksifadir/routing/route_names.dart';
@@ -14,7 +14,7 @@ import 'package:muziksifadir/admin/admin_control_panel.dart';
 import 'package:muziksifadir/views/anasayfa/anasayfa.dart';
 import 'package:muziksifadir/views/bizden_soylemesi/bizden_soylemesi.dart';
 import 'package:muziksifadir/views/hakkinda/hakkinda.dart';
-import 'package:muziksifadir/views/makaleler/makaleler.dart';
+import 'package:muziksifadir/views/bloglar/bloglar.dart';
 import 'package:muziksifadir/views/roportajlar/roportajlar.dart';
 import 'package:muziksifadir/views/sizden_gelenler/sizden_gelenler.dart';
 import 'package:provider/provider.dart';
@@ -37,11 +37,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
           ),
           settings.name);
 
-    case MakalelerRoute:
+    case BloglarRoute:
       return _getPageRoute(
           ChangeNotifierProvider<SayfalarModel>(
             create: (BuildContext context) => SayfalarModel(),
-            child: Makaleler(),
+            child: Bloglar(),
           ),
           settings.name);
 
@@ -102,13 +102,13 @@ Route<dynamic> generateRoute(RouteSettings settings) {
           ),
           settings.name);
 
-    case AdminControlPanelRoute + MakalelerRoute:
+    case AdminControlPanelRoute + BloglarRoute:
       return _getPageRoute(
           ChangeNotifierProvider<SayfalarModel>(
             create: (BuildContext context) => SayfalarModel(),
             child: ChangeNotifierProvider<AdminModel>(
               create: (BuildContext context) => AdminModel(),
-              child: AdminMakaleler(),
+              child: AdminBloglar(),
             ),
           ),
           settings.name);

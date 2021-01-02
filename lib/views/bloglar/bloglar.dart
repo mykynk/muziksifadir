@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:muziksifadir/constants/app_colors.dart';
 import 'package:muziksifadir/constants/size.dart';
-import 'package:muziksifadir/models/makaleler_model.dart';
+import 'package:muziksifadir/models/bloglar_model.dart';
 import 'package:muziksifadir/viewmodel/sayfalar_model.dart';
 import 'package:provider/provider.dart';
 
-class Makaleler extends StatefulWidget {
-  Makaleler({Key key}) : super(key: key);
+class Bloglar extends StatefulWidget {
+  Bloglar({Key key}) : super(key: key);
 
   @override
-  _MakalelerState createState() => _MakalelerState();
+  _BloglarState createState() => _BloglarState();
 }
 
-class _MakalelerState extends State<Makaleler> {
+class _BloglarState extends State<Bloglar> {
   @override
   Widget build(BuildContext context) {
     final _sayfalarModel = Provider.of<SayfalarModel>(context);
@@ -69,7 +69,7 @@ class _MakalelerState extends State<Makaleler> {
                         width: width(context) * 0.215,
                       ),
                       Text(
-                        "Makaleler",
+                        "Blog",
                         style: TextStyle(
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
@@ -95,7 +95,7 @@ class _MakalelerState extends State<Makaleler> {
                           child: ListView.builder(
                             itemCount: snapshot.data.length + 9,
                             itemBuilder: (BuildContext context, int index) {
-                              MakalelerModel oAnkiEleman = snapshot.data[0];
+                              BloglarModel oAnkiEleman = snapshot.data[0];
                               return Container(
                                 padding: EdgeInsets.all(20),
                                 margin: EdgeInsets.fromLTRB(50, 20, 50, 0),

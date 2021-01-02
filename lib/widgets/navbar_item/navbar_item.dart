@@ -23,11 +23,13 @@ class NavBarItem extends StatelessWidget {
       iconData: icon,
     );
     return GestureDetector(
+     
       onTap: () {
         // DON'T EVER USE A SERVICE DIRECTLY IN THE UI TO CHANGE ANY KIND OF STATE
         // SERVICES SHOULD ONLY BE USED FROM A VIEWMODEL
         locator<NavigationService>().navigateTo(navigationPath);
-        secili = title; 
+        Scaffold.of(context).openEndDrawer();
+        secili = title;
       },
       child: Provider.value(
         value: model,
