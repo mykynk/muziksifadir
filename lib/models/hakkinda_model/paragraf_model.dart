@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-enum Tur { paragraf, baslik, yanBaslik }
+enum Tur { paragraf, baslik, yanBaslik, fotograf }
 
 class Paragraf {
   final String text;

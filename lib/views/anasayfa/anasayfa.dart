@@ -21,10 +21,11 @@ class _AnaSayfaState extends State<AnaSayfa> {
 
   SayfalarModel _sayfalarModel;
   YoutubePlayerController _controllerYoutube = YoutubePlayerController(
-    initialVideoId: 'fS_cYA9_WK8',
+    initialVideoId: '8fcrEo9dTkM',
     params: YoutubePlayerParams(
       // playlist: ['nPt8bK2gbaU', 'gQDByCdjUXw'], // Defining custom playlist
       startAt: Duration(seconds: 0),
+      autoPlay: false,
       showControls: true,
       showFullscreenButton: true,
     ),
@@ -36,6 +37,16 @@ class _AnaSayfaState extends State<AnaSayfa> {
   void initState() {
     _controller = ScrollController();
     _controller.addListener(onScroll);
+    _controllerYoutube = YoutubePlayerController(
+      initialVideoId: '8fcrEo9dTkM',
+      params: YoutubePlayerParams(
+        // playlist: ['nPt8bK2gbaU', 'gQDByCdjUXw'], // Defining custom playlist
+        startAt: Duration(seconds: 0),
+        autoPlay: false,
+        showControls: true,
+        showFullscreenButton: true,
+      ),
+    );
     super.initState();
   }
 
@@ -105,10 +116,10 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                 child: Container(
                                   height: width(context) * 0.505,
                                   width: width(context) * 0.900,
-                                  child: YoutubePlayerIFrame(
+                               /*   child: YoutubePlayerIFrame(
                                     controller: _controllerYoutube,
                                     aspectRatio: 16 / 9,
-                                  ),
+                                  ),*/
                                 ),
                               ),
                               SizedBox(width: width(context) * 0.05),
@@ -173,10 +184,9 @@ class _AnaSayfaState extends State<AnaSayfa> {
       if (_controller.offset < 1000 && _controller.offset > 100) {
         double temp =
             ((_controller.offset + 100) * height(context) / (28 * 10)) * 0.0004;
-            if(temp>0.5){
-
-        size = temp;
-            }
+        if (temp > 0.5) {
+          size = temp;
+        }
         sizeNavBar =
             ((_controller.offset + 100) * height(context) / (28 * 10)) * 0.0004;
       }
